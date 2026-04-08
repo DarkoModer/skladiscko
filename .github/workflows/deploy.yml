@@ -29,7 +29,8 @@ jobs:
 
           sudo cp -r dist/* /var/www/maj/
 
-          sudo cp -r /root/maj_website/* /var/www/maj/
+          sudo cp -r /root/maj_website/public /var/www/maj/
+          sudo cp /root/maj_website/robots.txt /var/www/maj/
 
           sudo chown -R www-data:www-data /var/www/maj
           sudo chmod -R 755 /var/www/maj
