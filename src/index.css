@@ -93,25 +93,25 @@
   }
 
   .btn-primary {
-    @apply bg-steel-800 text-white px-7 py-3.5 rounded-full font-semibold transition-all duration-300 inline-flex items-center gap-2;
-    background: linear-gradient(135deg, #243b53, #334e68);
-    box-shadow: 0 2px 12px -2px rgba(16, 42, 67, 0.3);
+    @apply bg-blue-600 text-white px-7 py-3.5 rounded-full font-semibold transition-all duration-300 inline-flex items-center gap-2;
+    box-shadow: 0 2px 12px -2px rgba(37, 99, 235, 0.3);
   }
   .btn-primary:hover {
-    background: linear-gradient(135deg, #334e68, #486581);
-    box-shadow: 0 4px 20px -4px rgba(16, 42, 67, 0.4);
+    @apply bg-blue-700;
+    box-shadow: 0 4px 20px -4px rgba(37, 99, 235, 0.4);
     transform: translateY(-1px);
   }
 
   .btn-accent {
-    @apply bg-accent-500 text-white px-7 py-3.5 rounded-full font-semibold transition-all duration-300 inline-flex items-center gap-2;
-    box-shadow: 0 2px 12px -2px rgba(58, 159, 191, 0.3);
+    @apply bg-blue-600 text-white px-7 py-3.5 rounded-full font-semibold transition-all duration-300 inline-flex items-center gap-2;
+    box-shadow: 0 2px 12px -2px rgba(37, 99, 235, 0.3);
   }
   .btn-accent:hover {
-    @apply bg-accent-400;
-    box-shadow: 0 4px 20px -4px rgba(58, 159, 191, 0.4);
+    @apply bg-blue-700;
+    box-shadow: 0 4px 20px -4px rgba(37, 99, 235, 0.4);
     transform: translateY(-1px);
   }
+
 
   .section-dark {
     background: linear-gradient(180deg, #0a1929 0%, #102a43 100%);

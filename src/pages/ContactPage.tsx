@@ -3,10 +3,10 @@ import { useInView } from '../hooks/useInView';
 import { Phone, Mail, MapPin, Send, ChevronDown } from 'lucide-react';
 
 const faqs = [
-  { q: 'Kako hitro lahko dostavite kontejner?', a: 'Vecino kontejnerjev dostavimo v 2-3 delovnih dneh, odvisno od lokacije in razpolozljivosti.' },
-  { q: 'Ali ponujate moznosti financiranja?', a: 'Da, ponujamo prilagodljive moznosti placila za nakup kontejnerjev in izvedbo projektov.' },
-  { q: 'Koliko casa traja izvedba projekta?', a: 'Vecina projektov je dokoncanih v 2-4 tednih od zacetka del.' },
-  { q: 'Ali nudite garancijo na izvedena dela?', a: 'Da, na vsa nasa dela nudimo 2-letno garancijo, na kontejnerje pa standardno garancijo proizvajalca.' },
+  { q: 'Kako hitro lahko dostavite kontejner?', a: 'Večino kontejnerjev dostavimo v 2-3 delovnih dneh, odvisno od lokacije in razpoložljivosti.' },
+  { q: 'Ali ponujate možnosti financiranja?', a: 'Da, ponujamo prilagodljive možnosti plačila za nakup kontejnerjev in izvedbo projektov.' },
+  { q: 'Koliko časa traja izvedba projekta?', a: 'Večina projektov je dokončanih v 2-4 tednih od začetka del.' },
+  { q: 'Ali nudite garancijo na izvedena dela?', a: 'Da, na vsa naša dela nudimo 2-letno garancijo, na kontejnerje pa standardno garancijo proizvajalca.' },
 ];
 
 const ContactPage: React.FC = () => {
@@ -61,11 +61,15 @@ const ContactPage: React.FC = () => {
               Stopite v stik
             </h1>
             <p className="text-steel-400 text-lg leading-relaxed max-w-lg">
-              Nasa ekipa je pripravljena vam pomagati. Brezplacno svetovanje in konkurencna ponudba.
+              Naša ekipa je pripravljena vam pomagati. Brezplačno svetovanje in konkurenčna ponudba.
             </p>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-steel-950/0 via-steel-950/80 to-transparent blur-sm pointer-events-none" />
       </section>
+      <div className="relative h-12 -mt-12 z-10">
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent backdrop-blur-[2px]" />
+      </div>
 
       <section className="py-20 bg-white">
         <div ref={form.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
@@ -76,7 +80,7 @@ const ContactPage: React.FC = () => {
               <div className="space-y-5">
                 {[
                   { icon: <Phone className="h-5 w-5" />, label: 'Telefon', value: '069 633 480', sub: 'Na voljo 24/7', href: 'tel:069633480' },
-                  { icon: <Mail className="h-5 w-5" />, label: 'E-posta', value: 'info@skladiscko.si', sub: 'Odgovorimo v 24 urah', href: 'mailto:info@skladiscko.si' },
+                  { icon: <Mail className="h-5 w-5" />, label: 'E-pošta', value: 'info@skladiscko.si', sub: 'Odgovorimo v 24 urah', href: 'mailto:info@skladiscko.si' },
                   { icon: <MapPin className="h-5 w-5" />, label: 'Naslov', value: 'Puhova ulica 12a', sub: '2250 Ptuj' },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4">
@@ -86,7 +90,7 @@ const ContactPage: React.FC = () => {
                     <div>
                       <p className="text-xs text-steel-400 uppercase tracking-wider font-medium">{item.label}</p>
                       {item.href ? (
-                        <a href={item.href} className="font-semibold text-steel-900 hover:text-accent-500 transition-colors">{item.value}</a>
+                        <a href={item.href} className="font-semibold text-steel-900 hover:text-blue-600 transition-colors">{item.value}</a>
                       ) : (
                         <p className="font-semibold text-steel-900">{item.value}</p>
                       )}
@@ -101,7 +105,7 @@ const ContactPage: React.FC = () => {
                   <div className="absolute -top-20 -right-20 w-40 h-40 bg-accent-400/5 rounded-full blur-2xl" />
                 </div>
                 <div className="relative">
-                  <h3 className="font-semibold mb-3">Obmocja storitev</h3>
+                  <h3 className="font-semibold mb-3">Območja storitev</h3>
                   <div className="grid grid-cols-2 gap-2 text-sm text-steel-300">
                     <span>Ptuj in okolica</span>
                     <span>Maribor</span>
@@ -114,17 +118,17 @@ const ContactPage: React.FC = () => {
 
             <div className="lg:col-span-3">
               <div className="bg-steel-50 p-6 md:p-8 rounded-2xl">
-                <h2 className="text-2xl font-bold text-steel-900 mb-6">Posljite sporocilo</h2>
+                <h2 className="text-2xl font-bold text-steel-900 mb-6">Pošljite sporočilo</h2>
 
                 {submitStatus === 'success' && (
                   <div className="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
-                    <p className="text-emerald-800 text-sm">Vase povprasevanje je bilo uspesno poslano.</p>
+                    <p className="text-emerald-800 text-sm">Vaše povpraševanje je bilo uspešno poslano.</p>
                   </div>
                 )}
 
                 {submitStatus === 'error' && (
                   <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
-                    <p className="text-red-800 text-sm">Prislo je do napake. Poklichite nas na 069 633 480.</p>
+                    <p className="text-red-800 text-sm">Prišlo je do napake. Pokličite nas na 069 633 480.</p>
                   </div>
                 )}
 
@@ -133,13 +137,13 @@ const ContactPage: React.FC = () => {
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-steel-700 mb-1.5">Ime *</label>
                       <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all outline-none"
-                        placeholder="Vase ime" />
+                        className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none"
+                        placeholder="Vaše ime" />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-steel-700 mb-1.5">E-posta *</label>
+                      <label htmlFor="email" className="block text-sm font-medium text-steel-700 mb-1.5">E-pošta *</label>
                       <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all outline-none"
+                        className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none"
                         placeholder="vas@email.si" />
                     </div>
                   </div>
@@ -148,28 +152,28 @@ const ContactPage: React.FC = () => {
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium text-steel-700 mb-1.5">Telefon</label>
                       <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all outline-none"
+                        className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none"
                         placeholder="069 123 456" />
                     </div>
                     <div>
                       <label htmlFor="service" className="block text-sm font-medium text-steel-700 mb-1.5">Storitev</label>
                       <select id="service" name="service" value={formData.service} onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all outline-none">
+                        className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none">
                         <option value="">Izberite storitev</option>
                         <option value="Kontejnerji - nakup">Kontejnerji - nakup</option>
                         <option value="Kontejnerji - najem">Kontejnerji - najem</option>
-                        <option value="Skladiscne resitve">Skladiscne resitve</option>
+                        <option value="Skladiščne rešitve">Skladiščne rešitve</option>
                         <option value="Priprava terena">Priprava terena</option>
-                        <option value="Splosno svetovanje">Splosno svetovanje</option>
+                        <option value="Splošno svetovanje">Splošno svetovanje</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-steel-700 mb-1.5">Sporocilo *</label>
+                    <label htmlFor="message" className="block text-sm font-medium text-steel-700 mb-1.5">Sporočilo *</label>
                     <textarea id="message" name="message" required rows={5} value={formData.message} onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all outline-none resize-none"
-                      placeholder="Povejte nam o vasih potrebah..." />
+                      className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none resize-none"
+                      placeholder="Povejte nam o vaših potrebah..." />
                   </div>
 
                   <button
@@ -178,7 +182,7 @@ const ContactPage: React.FC = () => {
                     className="w-full btn-primary justify-center disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send className="h-4 w-4" />
-                    {isSubmitting ? 'Posiljam...' : 'Poslji sporocilo'}
+                    {isSubmitting ? 'Pošiljam...' : 'Pošlji sporočilo'}
                   </button>
                 </form>
               </div>
@@ -190,7 +194,7 @@ const ContactPage: React.FC = () => {
       <section className="py-20 bg-steel-50">
         <div ref={faqSection.ref} className="max-w-3xl mx-auto px-5 sm:px-8">
           <div className={`text-center mb-10 transition-all duration-700 ${faqSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-3xl font-bold text-steel-900 mb-3">Pogosta vprasanja</h2>
+            <h2 className="text-3xl font-bold text-steel-900 mb-3">Pogosta vprašanja</h2>
           </div>
 
           <div className="space-y-3">

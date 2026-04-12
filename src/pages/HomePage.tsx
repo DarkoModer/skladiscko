@@ -20,7 +20,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
       <section className="py-24 bg-white">
         <div ref={services.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`text-center mb-16 transition-all duration-700 ${services.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="text-accent-500 text-sm font-semibold tracking-widest uppercase mb-3">Nase storitve</p>
+            <p className="text-accent-500 text-sm font-semibold tracking-widest uppercase mb-3">Naše storitve</p>
             <h2 className="text-3xl md:text-4xl font-bold text-steel-900">
               Vse na enem mestu
             </h2>
@@ -31,7 +31,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
               {
                 icon: <Container className="h-6 w-6" />,
                 title: 'Kontejnerji',
-                desc: 'Premium kontejnerji za vse potrebe - od skladiscenja do transporta.',
+                desc: 'Premium kontejnerji za vse potrebe - od skladiščenja do transporta.',
                 img: luka1,
                 fallback: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800',
                 page: 'containers',
@@ -39,8 +39,8 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
               },
               {
                 icon: <Building className="h-6 w-6" />,
-                title: 'Najem skladisc',
-                desc: 'Skladiscne hale in sotori v Ptuju. Fleksibilni pogoji.',
+                title: 'Najem skladišč',
+                desc: 'Skladiščne hale in šotori v Ptuju. Fleksibilni pogoji.',
                 img: 'https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=800',
                 fallback: 'https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=800',
                 page: 'storage',
@@ -49,7 +49,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
               {
                 icon: <Hammer className="h-6 w-6" />,
                 title: 'Izgradnja',
-                desc: 'Imate zemljisce? Zgradimo skladisce od A do Z.',
+                desc: 'Imate zemljišče? Zgradimo skladišče od A do Ž.',
                 img: gradnja,
                 fallback: 'https://images.pexels.com/photos/1248516/pexels-photo-1248516.jpeg?auto=compress&cs=tinysrgb&w=800',
                 page: 'construction',
@@ -75,12 +75,12 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                   <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl mb-4 ${service.iconBg}`}>
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-steel-900 mb-2 group-hover:text-accent-500 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-steel-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                     {service.title}
                   </h3>
                   <p className="text-steel-500 leading-relaxed mb-4">{service.desc}</p>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent-500 group-hover:gap-3 transition-all duration-300">
-                    Vec o tem
+                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 group-hover:gap-3 transition-all duration-300">
+                    Več o tem
                     <ArrowRight className="h-4 w-4" />
                   </span>
                 </div>
@@ -90,7 +90,11 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
         </div>
       </section>
 
+      <div className="relative h-16 -mb-16 z-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/50 to-transparent backdrop-blur-[2px]" />
+      </div>
       <section className="py-24 section-dark relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-steel-950/0 via-steel-950/80 to-transparent blur-sm pointer-events-none" />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-accent-400/3 rounded-full blur-3xl animate-glow" />
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-steel-500/3 rounded-full blur-3xl animate-glow animate-delay-300" />
@@ -103,10 +107,10 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
               Novo v ponudbi
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-              Najem skladiscnega kontejnerja
+              Najem skladiščnega kontejnerja
             </h2>
             <p className="text-steel-400 max-w-xl mx-auto">
-              Varno skladiscenje v kontejnerju 20' ali 40' na lokacijah Ptuj in Maribor
+              Varno skladiščenje v kontejnerju 20' ali 40' na lokacijah Ptuj in Maribor
             </p>
           </div>
 
@@ -114,11 +118,11 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
             <div className="grid grid-cols-2 gap-3">
               {[
                 { icon: <Clock className="h-4 w-4" />, text: 'Dostop 24/7' },
-                { icon: <Lock className="h-4 w-4" />, text: 'Vas kljuc' },
+                { icon: <Lock className="h-4 w-4" />, text: 'Vaš ključ' },
                 { icon: <Shield className="h-4 w-4" />, text: 'Varovan prostor' },
                 { icon: <MapPin className="h-4 w-4" />, text: 'Ptuj in Maribor' },
-                { icon: <Container className="h-4 w-4" />, text: '20\' (~14 m2)' },
-                { icon: <Truck className="h-4 w-4" />, text: '40\' (~28 m2)' },
+                { icon: <Container className="h-4 w-4" />, text: '20\' (~14 m\u00B2)' },
+                { icon: <Truck className="h-4 w-4" />, text: '40\' (~28 m\u00B2)' },
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 bg-white/[0.04] rounded-xl p-4 border border-white/[0.06] hover:bg-white/[0.07] transition-colors duration-300">
                   <span className="text-accent-400">{item.icon}</span>
@@ -141,7 +145,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                 ].map((row, i) => (
                   <div key={i} className={`flex items-center justify-between px-6 py-3.5 ${row.best ? 'bg-accent-500/10' : 'hover:bg-white/[0.03]'} transition-colors duration-300`}>
                     <div className="flex items-center gap-3">
-                      {row.best && <span className="bg-gradient-to-r from-accent-500 to-accent-600 text-white text-xs font-bold px-2.5 py-0.5 rounded-full">Najboljsa</span>}
+                      {row.best && <span className="bg-gradient-to-r from-accent-500 to-accent-600 text-white text-xs font-bold px-2.5 py-0.5 rounded-full">Najboljša</span>}
                       <span className="text-steel-300 text-sm">{row.period}</span>
                     </div>
                     <div>
@@ -159,12 +163,16 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
               onClick={() => onPageChange('storage')}
               className="btn-accent group"
             >
-              Vec o najemu
+              Več o najemu
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-steel-950/0 via-steel-950/80 to-transparent blur-sm pointer-events-none" />
       </section>
+      <div className="relative h-16 -mt-16 z-10">
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent backdrop-blur-[2px]" />
+      </div>
 
       <section className="py-24 bg-white">
         <div ref={cta.ref} className="max-w-5xl mx-auto px-5 sm:px-8">
@@ -175,20 +183,20 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                   Pripravite se na novi projekt?
                 </h2>
                 <p className="text-steel-400 mb-8 leading-relaxed">
-                  Brezplacna svetovanja, hitri odzivni casi in konkurencne cene.
+                  Brezplačna svetovanja, hitri odzivni časi in konkurenčne cene.
                 </p>
                 <button
                   onClick={() => onPageChange('contact')}
                   className="group bg-white text-steel-900 px-7 py-3.5 rounded-full font-semibold hover:bg-steel-50 transition-all duration-300 inline-flex items-center gap-2"
                 >
-                  Brezplacna ponudba
+                  Brezplačna ponudba
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
               <div className="relative lg:col-span-2 min-h-[200px] lg:min-h-0">
                 <img
                   src={gradnja}
-                  alt="Skladisce"
+                  alt="Skladišče"
                   className="absolute inset-0 w-full h-full object-cover"
                   onError={(e) => {
                     e.currentTarget.src = 'https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=800';

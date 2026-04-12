@@ -22,16 +22,20 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
         </div>
         <div ref={hero.ref} className="relative max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`max-w-2xl transition-all duration-700 ${hero.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="text-accent-400 text-sm font-semibold tracking-widest uppercase mb-4">Najem skladisc</p>
+            <p className="text-accent-400 text-sm font-semibold tracking-widest uppercase mb-4">Najem skladišč</p>
             <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
-              Najem skladiscnih prostorov
+              Najem skladiščnih prostorov
             </h1>
             <p className="text-steel-400 text-lg leading-relaxed max-w-lg">
-              Najemite skladiscne hale, sotore ali kontejnerje po ugodnih cenah. Fleksibilni pogoji.
+              Najemite skladiščne hale, šotore ali kontejnerje po ugodnih cenah. Fleksibilni pogoji.
             </p>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-steel-950/0 via-steel-950/80 to-transparent blur-sm pointer-events-none" />
       </section>
+      <div className="relative h-12 -mt-12 z-10">
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent backdrop-blur-[2px]" />
+      </div>
 
       <section className="py-20 bg-white">
         <div ref={containerSection.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
@@ -53,7 +57,7 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
 
                   <div className="grid grid-cols-2 gap-3 mb-6">
                     {[
-                      { icon: <Container className="h-4 w-4" />, text: '20\' (~14 m2) ali 40\' (~28 m2)' },
+                      { icon: <Container className="h-4 w-4" />, text: '20\' (~14 m\u00B2) ali 40\' (~28 m\u00B2)' },
                       { icon: <Shield className="h-4 w-4" />, text: 'Jeklena vodotesna konstrukcija' },
                       { icon: <CheckCircle className="h-4 w-4" />, text: 'Varovan in ograjen prostor' },
                       { icon: <MapPin className="h-4 w-4" />, text: 'Lokaciji Ptuj in Maribor' },
@@ -87,7 +91,7 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                     onClick={() => onPageChange?.('contact')}
                     className="mt-6 btn-accent text-sm group"
                   >
-                    Povprasevanje
+                    Povpraševanje
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
@@ -96,7 +100,7 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
               <div className="relative min-h-[300px]">
                 <img
                   src={storage}
-                  alt="Skladiscni kontejner"
+                  alt="Skladiščni kontejner"
                   className="absolute inset-0 w-full h-full object-cover"
                   onError={(e) => {
                     e.currentTarget.src = 'https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=1200';
@@ -112,14 +116,14 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
       <section className="py-20 bg-steel-50">
         <div ref={hallSection.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`text-center mb-12 transition-all duration-700 ${hallSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-3xl font-bold text-steel-900 mb-3">Hale in sotori</h2>
-            <p className="text-steel-500">Izbira glede na vase potrebe</p>
+            <h2 className="text-3xl font-bold text-steel-900 mb-3">Hale in šotori</h2>
+            <p className="text-steel-500">Izbira glede na vaše potrebe</p>
           </div>
 
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 transition-all duration-700 ${hallSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
             <div className="card-steel overflow-hidden hover-lift">
               <div className="relative h-52 overflow-hidden">
-                <img src={hala} alt="Skladiscna hala" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = 'https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=1200'; }} />
+                <img src={hala} alt="Skladiščna hala" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = 'https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=1200'; }} />
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
@@ -127,7 +131,7 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                     <Warehouse className="h-5 w-5 text-steel-700" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-steel-900">Skladiscna hala</h3>
+                    <h3 className="text-lg font-bold text-steel-900">Skladiščna hala</h3>
                     <p className="text-xs text-steel-500">Idealno za paletno blago</p>
                   </div>
                 </div>
@@ -146,14 +150,14 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                 </div>
                 <div className="bg-steel-50 rounded-xl p-4 flex items-center justify-between">
                   <span className="text-sm font-medium text-steel-700">Cena najema:</span>
-                  <span className="text-xl font-bold text-steel-800">Od 10 &euro;/m2</span>
+                  <span className="text-xl font-bold text-steel-800">Od 10 &euro;/m\u00B2</span>
                 </div>
               </div>
             </div>
 
             <div className="card-steel overflow-hidden hover-lift">
               <div className="relative h-52 overflow-hidden">
-                <img src={sotor} alt="Skladiscni sotor" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = 'https://images.pexels.com/photos/6069093/pexels-photo-6069093.jpeg?auto=compress&cs=tinysrgb&w=1200'; }} />
+                <img src={sotor} alt="Skladiščni šotor" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = 'https://images.pexels.com/photos/6069093/pexels-photo-6069093.jpeg?auto=compress&cs=tinysrgb&w=1200'; }} />
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
@@ -161,16 +165,16 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                     <Home className="h-5 w-5 text-accent-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-steel-900">Skladiscni sotor</h3>
+                    <h3 className="text-lg font-bold text-steel-900">Skladiščni šotor</h3>
                     <p className="text-xs text-steel-500">Za vozila, plovila in sezonsko blago</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2 mb-4">
                   {[
                     { icon: <CarFront className="h-4 w-4" />, text: 'Kamperji, prikolice' },
-                    { icon: <Anchor className="h-4 w-4" />, text: 'Colni in plovila' },
+                    { icon: <Anchor className="h-4 w-4" />, text: 'Čolni in plovila' },
                     { icon: <Truck className="h-4 w-4" />, text: 'Gradbeni stroji' },
-                    { icon: <Shield className="h-4 w-4" />, text: 'Vremenska zascita' },
+                    { icon: <Shield className="h-4 w-4" />, text: 'Vremenska zaščita' },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-2 text-sm text-steel-600">
                       <span className="text-accent-500">{item.icon}</span>
@@ -180,7 +184,7 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                 </div>
                 <div className="bg-accent-500/10 rounded-xl p-4 flex items-center justify-between">
                   <span className="text-sm font-medium text-steel-700">Cena najema:</span>
-                  <span className="text-xl font-bold text-accent-600">Od 5 &euro;/m2</span>
+                  <span className="text-xl font-bold text-accent-600">Od 5 &euro;/m\u00B2</span>
                 </div>
               </div>
             </div>
@@ -195,7 +199,7 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
               <MapPin className="h-5 w-5 text-accent-500" />
               <h3 className="text-xl font-bold text-steel-900">Lokacija v Ptuju</h3>
             </div>
-            <p className="text-steel-500 mb-8 max-w-lg mx-auto">Strateski odlicna lokacija z enostavnim dostopom do avtoceste.</p>
+            <p className="text-steel-500 mb-8 max-w-lg mx-auto">Strateško odlična lokacija z enostavnim dostopom do avtoceste.</p>
             <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
               {[
                 { value: '2 km', label: 'od A4' },
@@ -212,13 +216,17 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
         </div>
       </section>
 
+      <div className="relative h-12 -mb-12 z-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/50 to-transparent backdrop-blur-[2px]" />
+      </div>
       <section className="py-20 section-dark relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-steel-950/0 via-steel-950/60 to-transparent blur-sm pointer-events-none" />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-accent-400/3 rounded-full blur-3xl" />
         </div>
         <div className="relative max-w-3xl mx-auto text-center px-5 sm:px-8">
-          <h2 className="text-3xl font-bold text-white mb-4">Potrebujete skladiscni prostor?</h2>
-          <p className="text-steel-400 mb-8">Kontaktirajte nas za vec informacij</p>
+          <h2 className="text-3xl font-bold text-white mb-4">Potrebujete skladiščni prostor?</h2>
+          <p className="text-steel-400 mb-8">Kontaktirajte nas za več informacij</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <button onClick={() => onPageChange?.('contact')} className="btn-accent">
               Pridobite ponudbo

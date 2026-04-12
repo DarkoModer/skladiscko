@@ -7,20 +7,20 @@ interface AboutPageProps {
 }
 
 const values = [
-  { icon: <Target className="h-5 w-5" />, title: 'Zanesljivost', desc: 'Vsak projekt izvedemo pravocasno in kakovostno.' },
-  { icon: <Users className="h-5 w-5" />, title: 'Prilagodljivost', desc: 'Iscemo optimalne resitve za vsak projekt.' },
+  { icon: <Target className="h-5 w-5" />, title: 'Zanesljivost', desc: 'Vsak projekt izvedemo pravočasno in kakovostno.' },
+  { icon: <Users className="h-5 w-5" />, title: 'Prilagodljivost', desc: 'Iščemo optimalne rešitve za vsak projekt.' },
   { icon: <Award className="h-5 w-5" />, title: 'Kakovost', desc: 'Kakovostni materiali in preverjene tehnologije.' },
-  { icon: <Heart className="h-5 w-5" />, title: 'Postenost', desc: 'Transparentna komunikacija in postene cene.' },
+  { icon: <Heart className="h-5 w-5" />, title: 'Poštenost', desc: 'Transparentna komunikacija in poštene cene.' },
 ];
 
 const timeline = [
-  { year: '2020', event: 'Ustanovitev podjetja Skladiscko' },
-  { year: '2021', event: 'Prvi vecji projekt skladiscnih kontejnerjev' },
-  { year: '2022', event: 'Razsiritev na celovito pripravo terena' },
+  { year: '2020', event: 'Ustanovitev podjetja Skladiščko' },
+  { year: '2021', event: 'Prvi večji projekt skladiščnih kontejnerjev' },
+  { year: '2022', event: 'Razširitev na celovito pripravo terena' },
   { year: '2023', event: '100+ dostavljenih kontejnerjev' },
   { year: '2024', event: 'Napredni varnostni sistemi' },
-  { year: '2025', event: 'Razsiritev z najemnimi storitvami' },
-  { year: '2026', event: '250+ uspesno dostavljenih kontejnerjev' },
+  { year: '2025', event: 'Razširitev z najemnimi storitvami' },
+  { year: '2026', event: '250+ uspešno dostavljenih kontejnerjev' },
 ];
 
 const AboutPage: React.FC<AboutPageProps> = ({ onPageChange }) => {
@@ -39,22 +39,26 @@ const AboutPage: React.FC<AboutPageProps> = ({ onPageChange }) => {
           <div className={`max-w-2xl transition-all duration-700 ${hero.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <p className="text-accent-400 text-sm font-semibold tracking-widest uppercase mb-4">O nas</p>
             <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
-              O podjetju Skladiscko
+              O podjetju Skladiščko
             </h1>
             <p className="text-steel-400 text-lg leading-relaxed max-w-lg">
-              Zaupanja vreden ponudnik skladiscnih resitev z vec kot 6 leti izkusenj.
+              Zaupanja vreden ponudnik skladiščnih rešitev z več kot 6 leti izkušenj.
             </p>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-steel-950/0 via-steel-950/80 to-transparent blur-sm pointer-events-none" />
       </section>
+      <div className="relative h-12 -mt-12 z-10">
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent backdrop-blur-[2px]" />
+      </div>
 
       <section className="py-20 bg-white">
         <div ref={mission.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 transition-all duration-700 ${mission.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="bg-steel-50 p-8 md:p-10 rounded-2xl">
-              <h2 className="text-2xl font-bold text-steel-900 mb-4">Nasa misija</h2>
+              <h2 className="text-2xl font-bold text-steel-900 mb-4">Naša misija</h2>
               <p className="text-steel-600 leading-relaxed">
-                Strankam zagotavljamo varno in zanesljivo skladiscenje ter celovite resitve,
+                Strankam zagotavljamo varno in zanesljivo skladiščenje ter celovite rešitve,
                 ki izpolnjujejo potrebe sodobnega poslovanja in zasebnih uporabnikov.
               </p>
             </div>
@@ -63,9 +67,9 @@ const AboutPage: React.FC<AboutPageProps> = ({ onPageChange }) => {
                 <div className="absolute -top-20 -right-20 w-40 h-40 bg-accent-400/5 rounded-full blur-2xl" />
               </div>
               <div className="relative">
-                <h2 className="text-2xl font-bold mb-4">Nasa vizija</h2>
+                <h2 className="text-2xl font-bold mb-4">Naša vizija</h2>
                 <p className="text-steel-400 leading-relaxed">
-                  Vodilni ponudnik skladiscnih resitev v regiji, prepoznaven po hitrosti,
+                  Vodilni ponudnik skladiščnih rešitev v regiji, prepoznaven po hitrosti,
                   zanesljivosti in strokovnosti pri vsakem projektu.
                 </p>
               </div>
@@ -77,8 +81,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ onPageChange }) => {
       <section className="py-20 bg-steel-50">
         <div ref={valuesSection.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`text-center mb-14 transition-all duration-700 ${valuesSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-3xl font-bold text-steel-900 mb-3">Nase vrednote</h2>
-            <p className="text-steel-500">Nacela, ki vodijo nase delo</p>
+            <h2 className="text-3xl font-bold text-steel-900 mb-3">Naše vrednote</h2>
+            <p className="text-steel-500">Načela, ki vodijo naše delo</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -102,8 +106,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ onPageChange }) => {
       <section className="py-20 bg-white">
         <div ref={timelineSection.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`text-center mb-14 transition-all duration-700 ${timelineSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-3xl font-bold text-steel-900 mb-3">Nasa pot</h2>
-            <p className="text-steel-500">Kljucni mejniki nase rasti</p>
+            <h2 className="text-3xl font-bold text-steel-900 mb-3">Naša pot</h2>
+            <p className="text-steel-500">Ključni mejniki naše rasti</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -134,7 +138,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onPageChange }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-steel-900/80 to-transparent flex items-end p-6">
                   <div>
                     <div className="text-3xl font-bold text-white mb-1">250+</div>
-                    <div className="text-sm text-white/70">Uspesno dostavljenih kontejnerjev</div>
+                    <div className="text-sm text-white/70">Uspešno dostavljenih kontejnerjev</div>
                   </div>
                 </div>
               </div>
@@ -143,13 +147,17 @@ const AboutPage: React.FC<AboutPageProps> = ({ onPageChange }) => {
         </div>
       </section>
 
+      <div className="relative h-12 -mb-12 z-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/50 to-transparent backdrop-blur-[2px]" />
+      </div>
       <section className="py-20 section-dark relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-steel-950/0 via-steel-950/60 to-transparent blur-sm pointer-events-none" />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-accent-400/3 rounded-full blur-3xl" />
         </div>
         <div className="relative max-w-3xl mx-auto text-center px-5 sm:px-8">
           <h2 className="text-3xl font-bold text-white mb-4">Pripravljeni za sodelovanje?</h2>
-          <p className="text-steel-400 mb-8">Brezplacno svetovanje in konkurencna ponudba</p>
+          <p className="text-steel-400 mb-8">Brezplačno svetovanje in konkurenčna ponudba</p>
           <button
             onClick={() => onPageChange?.('contact')}
             className="btn-accent group"

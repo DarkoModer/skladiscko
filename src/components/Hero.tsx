@@ -37,14 +37,14 @@ const Hero: React.FC<HeroProps> = ({ onPageChange }) => {
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.08] mb-6 opacity-0 animate-fade-in-up animate-delay-100">
-            Vas partner za
+            Vaš partner za
             <span className="block metallic-text mt-1">
-              skladiscne resitve
+              skladiščne rešitve
             </span>
           </h1>
 
           <p className="text-lg md:text-xl text-steel-300 leading-relaxed mb-10 max-w-lg opacity-0 animate-fade-in-up animate-delay-200">
-            Kakovostni kontejnerji, skladiscni projekti in najemne storitve. Zanesljivo in hitro.
+            Kakovostni kontejnerji, skladiščni projekti in najemne storitve. Zanesljivo in hitro.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up animate-delay-300">
@@ -52,7 +52,7 @@ const Hero: React.FC<HeroProps> = ({ onPageChange }) => {
               onClick={() => onPageChange('containers')}
               className="btn-accent group"
             >
-              Raziscite ponudbo
+              Raziščite ponudbo
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </button>
             <button
@@ -67,7 +67,7 @@ const Hero: React.FC<HeroProps> = ({ onPageChange }) => {
             {[
               { value: '250+', label: 'Kontejnerjev' },
               { value: '25+', label: 'Projektov' },
-              { value: '6+', label: 'Let izkusenj' },
+              { value: '6+', label: 'Let izkušenj' },
             ].map((stat, i) => (
               <div key={i} className="flex items-center gap-10">
                 <div>

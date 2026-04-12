@@ -7,7 +7,7 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
   const links = [
     { name: 'Kontejnerji', id: 'containers' },
-    { name: 'Najem skladisc', id: 'storage' },
+    { name: 'Najem skladišč', id: 'storage' },
     { name: 'Izgradnja', id: 'construction' },
     { name: 'O nas', id: 'about' },
     { name: 'Kontakt', id: 'contact' },
@@ -23,10 +23,10 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
               <div className="bg-gradient-to-br from-steel-600 to-steel-700 p-1.5 rounded-lg">
                 <Container className="h-5 w-5 text-white" />
               </div>
-              <span className="text-lg font-bold tracking-tight">Skladiscko</span>
+              <span className="text-lg font-bold tracking-tight">Skladiščko</span>
             </div>
             <p className="text-steel-400 leading-relaxed max-w-sm mb-6">
-              Zaupanja vreden ponudnik skladiscnih resitev z vec kot 6 leti izkusenj.
+              Zaupanja vreden ponudnik skladiščnih rešitev z več kot 6 leti izkušenj.
             </p>
             <div className="flex flex-col gap-3">
               <a href="tel:069633480" className="flex items-center gap-3 text-steel-400 hover:text-accent-300 transition-colors duration-300">
@@ -83,7 +83,7 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
         <div className="divider-glow" />
         <div className="py-6 text-center">
           <p className="text-sm text-steel-500">
-            &copy; 2026 Skladiscko. Vse pravice pridrzane.
+            &copy; 2026 Skladiščko. Vse pravice pridržane.
           </p>
         </div>
       </div>

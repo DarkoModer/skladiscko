@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => {
             <span className={`text-lg font-bold tracking-tight transition-colors duration-300 ${
               scrolled ? 'text-steel-900' : 'text-white'
             }`}>
-              Skladiscko
+              Skladiščko
             </span>
           </button>
 
