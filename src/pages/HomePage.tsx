@@ -90,11 +90,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
         </div>
       </section>
 
-      <div className="relative h-16 -mb-16 z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/50 to-transparent backdrop-blur-[2px]" />
-      </div>
       <section className="py-24 section-dark relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-steel-950/0 via-steel-950/80 to-transparent blur-sm pointer-events-none" />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-accent-400/3 rounded-full blur-3xl animate-glow" />
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-steel-500/3 rounded-full blur-3xl animate-glow animate-delay-300" />
@@ -168,11 +164,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
             </button>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-steel-950/0 via-steel-950/80 to-transparent blur-sm pointer-events-none" />
       </section>
-      <div className="relative h-16 -mt-16 z-10">
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent backdrop-blur-[2px]" />
-      </div>
 
       <section className="py-24 bg-white">
         <div ref={cta.ref} className="max-w-5xl mx-auto px-5 sm:px-8">

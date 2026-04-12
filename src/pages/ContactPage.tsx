@@ -65,11 +65,7 @@ const ContactPage: React.FC = () => {
             </p>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-steel-950/0 via-steel-950/80 to-transparent blur-sm pointer-events-none" />
       </section>
-      <div className="relative h-12 -mt-12 z-10">
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent backdrop-blur-[2px]" />
-      </div>
 
       <section className="py-20 bg-white">
         <div ref={form.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
