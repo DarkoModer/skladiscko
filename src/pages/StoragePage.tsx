@@ -35,7 +35,7 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
 
       <section className="py-20 bg-white">
         <div ref={containerSection.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
-          <div className={`section-dark rounded-2xl overflow-hidden transition-all duration-700 ${containerSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`rounded-2xl overflow-hidden transition-all duration-700 ${containerSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ background: 'linear-gradient(180deg, #071427 0%, #0c1f42 100%)' }}>
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="p-8 md:p-10 relative">
                 <div className="absolute inset-0 pointer-events-none">
@@ -75,7 +75,6 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                     ].map((row, i) => (
                       <div key={i} className={`flex justify-between py-2 px-3 rounded-lg text-sm ${row.best ? 'bg-amber-500/10 border-l-2 border-amber-400' : ''}`}>
                         <div className="flex items-center gap-2">
-                          {row.best && <span className="bg-gradient-to-r from-amber-500 to-amber-400 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-sm shadow-amber-500/30">Top</span>}
                           <span className="text-steel-300">{row.period}</span>
                         </div>
                         <span className={`font-bold ${row.best ? 'text-amber-300' : 'text-white'}`}>{row.price} &euro; <span className="text-steel-500 font-normal">+ DDV</span></span>
@@ -102,7 +101,7 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                     e.currentTarget.src = 'https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=1200';
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-steel-950 via-transparent to-transparent lg:block hidden" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#071427] via-transparent to-transparent lg:block hidden" />
               </div>
             </div>
           </div>
@@ -117,18 +116,22 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
           </div>
 
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 transition-all duration-700 ${hallSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
-            <div className="card-steel overflow-hidden hover-lift">
+            <div className="bg-white rounded-2xl border-2 border-blue-600 overflow-hidden hover-lift shadow-lg shadow-blue-600/10">
               <div className="relative h-52 overflow-hidden">
                 <img src={hala} alt="Skladiščna hala" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = 'https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=1200'; }} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                <div className="absolute top-3 left-3">
+                  <span className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">Skladiščna hala</span>
+                </div>
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-blue-50 p-2 rounded-xl">
-                    <Warehouse className="h-5 w-5 text-blue-700" />
+                  <div className="bg-blue-600 p-2 rounded-xl">
+                    <Warehouse className="h-5 w-5 text-white" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-steel-900">Skladiščna hala</h3>
-                    <p className="text-xs text-steel-500">Idealno za paletno blago</p>
+                    <p className="text-xs text-blue-600 font-medium">Idealno za paletno blago</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2 mb-4">
@@ -138,36 +141,40 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                     { icon: <CheckCircle className="h-4 w-4" />, text: 'Trdna tla' },
                     { icon: <Shield className="h-4 w-4" />, text: '24/7 dostop' },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm text-steel-600">
-                      <span className="text-blue-500">{item.icon}</span>
+                    <div key={i} className="flex items-center gap-2 text-sm text-steel-700 font-medium">
+                      <span className="text-blue-600">{item.icon}</span>
                       {item.text}
                     </div>
                   ))}
                 </div>
-                <div className="bg-steel-50 rounded-xl p-4 flex items-center justify-between">
+                <div className="bg-blue-600 rounded-xl p-4 flex items-center justify-between">
                   <div>
-                    <span className="text-sm font-medium text-steel-700">Cena najema</span>
-                    <p className="text-xs text-steel-400">na mesec + DDV</p>
+                    <span className="text-sm font-medium text-blue-100">Cena najema</span>
+                    <p className="text-xs text-blue-200">na mesec + DDV</p>
                   </div>
                   <div className="text-right">
-                    <span className="text-xl font-bold text-steel-800">od 10 &euro;/m&sup2;</span>
+                    <span className="text-xl font-bold text-white">od 10 &euro;/m&sup2;</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="card-steel overflow-hidden hover-lift">
+            <div className="bg-white rounded-2xl border-2 border-amber-500 overflow-hidden hover-lift shadow-lg shadow-amber-500/10">
               <div className="relative h-52 overflow-hidden">
                 <img src={sotor} alt="Skladiščni šotor" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = 'https://images.pexels.com/photos/6069093/pexels-photo-6069093.jpeg?auto=compress&cs=tinysrgb&w=1200'; }} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                <div className="absolute top-3 left-3">
+                  <span className="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">Skladiščni šotor</span>
+                </div>
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-sky-50 p-2 rounded-xl">
-                    <Home className="h-5 w-5 text-sky-600" />
+                  <div className="bg-amber-500 p-2 rounded-xl">
+                    <Home className="h-5 w-5 text-white" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-steel-900">Skladiščni šotor</h3>
-                    <p className="text-xs text-steel-500">Za vozila, plovila in sezonsko blago</p>
+                    <p className="text-xs text-amber-600 font-medium">Za vozila, plovila in sezonsko blago</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2 mb-4">
@@ -177,19 +184,19 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                     { icon: <Truck className="h-4 w-4" />, text: 'Gradbeni stroji' },
                     { icon: <Shield className="h-4 w-4" />, text: 'Vremenska zaščita' },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm text-steel-600">
-                      <span className="text-blue-500">{item.icon}</span>
+                    <div key={i} className="flex items-center gap-2 text-sm text-steel-700 font-medium">
+                      <span className="text-amber-500">{item.icon}</span>
                       {item.text}
                     </div>
                   ))}
                 </div>
-                <div className="bg-blue-50 rounded-xl p-4 flex items-center justify-between">
+                <div className="bg-amber-500 rounded-xl p-4 flex items-center justify-between">
                   <div>
-                    <span className="text-sm font-medium text-steel-700">Cena najema</span>
-                    <p className="text-xs text-steel-400">na mesec + DDV</p>
+                    <span className="text-sm font-medium text-amber-100">Cena najema</span>
+                    <p className="text-xs text-amber-200">na mesec + DDV</p>
                   </div>
                   <div className="text-right">
-                    <span className="text-xl font-bold text-blue-700">od 5 &euro;/m&sup2;</span>
+                    <span className="text-xl font-bold text-white">od 5 &euro;/m&sup2;</span>
                   </div>
                 </div>
               </div>

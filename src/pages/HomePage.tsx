@@ -48,7 +48,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                 page: 'storage',
                 iconBg: 'bg-sky-50 text-sky-700',
                 accentBar: 'from-sky-500 to-sky-300',
-                isNew: true,
+                isNew: false,
               },
               {
                 icon: <Hammer className="h-6 w-6" />,
@@ -83,7 +83,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     onError={(e) => { e.currentTarget.src = service.fallback; }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-steel-900/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.accentBar} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                 </div>
                 <div className="p-6">
@@ -105,7 +105,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
         </div>
       </section>
 
-      <section className="py-24 section-dark relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #0a1830 0%, #0f2248 100%)' }}>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-white/[0.03] rounded-full blur-3xl animate-glow" />
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-white/[0.02] rounded-full blur-3xl animate-glow animate-delay-300" />
