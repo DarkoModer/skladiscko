@@ -139,13 +139,13 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                   { period: '37 - 48 mesecev', price: '70' },
                   { period: '49 - 60 mesecev', price: '65', best: true },
                 ].map((row, i) => (
-                  <div key={i} className={`flex items-center justify-between px-6 py-3.5 ${row.best ? 'bg-accent-500/10' : 'hover:bg-white/[0.03]'} transition-colors duration-300`}>
+                  <div key={i} className={`flex items-center justify-between px-6 py-3.5 ${row.best ? 'bg-blue-500/15' : 'hover:bg-white/[0.03]'} transition-colors duration-300`}>
                     <div className="flex items-center gap-3">
-                      {row.best && <span className="bg-gradient-to-r from-accent-500 to-accent-600 text-white text-xs font-bold px-2.5 py-0.5 rounded-full">Najboljša</span>}
+                      {row.best && <span className="bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs font-bold px-2.5 py-0.5 rounded-full">Najboljša</span>}
                       <span className="text-steel-300 text-sm">{row.period}</span>
                     </div>
                     <div>
-                      <span className={`font-bold text-lg ${row.best ? 'text-accent-300' : 'text-white'}`}>{row.price} &euro;</span>
+                      <span className={`font-bold text-lg ${row.best ? 'text-blue-200' : 'text-white'}`}>{row.price} &euro;</span>
                       <span className="text-steel-500 text-sm ml-1">+ DDV</span>
                     </div>
                   </div>

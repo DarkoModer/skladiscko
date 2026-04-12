@@ -16,7 +16,7 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
 
   return (
     <div>
-      <section className="relative section-dark pt-32 pb-20 overflow-hidden">
+      <section className="relative section-dark-storage pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent-400/3 rounded-full blur-3xl animate-glow" />
         </div>
@@ -73,12 +73,12 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                       { period: '37 - 48 mes.', price: '70' },
                       { period: '49 - 60 mes.', price: '65', best: true },
                     ].map((row, i) => (
-                      <div key={i} className={`flex justify-between py-2 px-3 rounded-lg text-sm ${row.best ? 'bg-accent-500/10' : ''}`}>
+                      <div key={i} className={`flex justify-between py-2 px-3 rounded-lg text-sm ${row.best ? 'bg-blue-500/15' : ''}`}>
                         <div className="flex items-center gap-2">
-                          {row.best && <span className="bg-gradient-to-r from-accent-500 to-accent-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">Top</span>}
+                          {row.best && <span className="bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs font-bold px-2 py-0.5 rounded-full">Top</span>}
                           <span className="text-steel-300">{row.period}</span>
                         </div>
-                        <span className={`font-bold ${row.best ? 'text-accent-300' : 'text-white'}`}>{row.price} &euro; <span className="text-steel-500 font-normal">+ DDV</span></span>
+                        <span className={`font-bold ${row.best ? 'text-blue-200' : 'text-white'}`}>{row.price} &euro; <span className="text-steel-500 font-normal">+ DDV</span></span>
                       </div>
                     ))}
                   </div>
@@ -145,8 +145,13 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                   ))}
                 </div>
                 <div className="bg-steel-50 rounded-xl p-4 flex items-center justify-between">
-                  <span className="text-sm font-medium text-steel-700">Cena najema:</span>
-                  <span className="text-xl font-bold text-steel-800">Od 10 &euro;/m\u00B2</span>
+                  <div>
+                    <span className="text-sm font-medium text-steel-700">Cena najema</span>
+                    <p className="text-xs text-steel-400">na mesec + DDV</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xl font-bold text-steel-800">od 10 &euro;/m&sup2;</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -178,9 +183,14 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                     </div>
                   ))}
                 </div>
-                <div className="bg-accent-500/10 rounded-xl p-4 flex items-center justify-between">
-                  <span className="text-sm font-medium text-steel-700">Cena najema:</span>
-                  <span className="text-xl font-bold text-accent-600">Od 5 &euro;/m\u00B2</span>
+                <div className="bg-blue-50 rounded-xl p-4 flex items-center justify-between">
+                  <div>
+                    <span className="text-sm font-medium text-steel-700">Cena najema</span>
+                    <p className="text-xs text-steel-400">na mesec + DDV</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xl font-bold text-blue-700">od 5 &euro;/m&sup2;</span>
+                  </div>
                 </div>
               </div>
             </div>

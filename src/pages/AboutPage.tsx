@@ -31,7 +31,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onPageChange }) => {
 
   return (
     <div>
-      <section className="relative section-dark pt-32 pb-20 overflow-hidden">
+      <section className="relative section-dark-about pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent-400/3 rounded-full blur-3xl animate-glow" />
         </div>

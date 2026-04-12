@@ -117,6 +117,26 @@
     background: linear-gradient(180deg, #1e3f87 0%, #2952a3 100%);
   }
 
+  .section-dark-storage {
+    background: linear-gradient(160deg, #163a7a 0%, #1d4e9e 100%);
+  }
+
+  .section-dark-containers {
+    background: linear-gradient(160deg, #0f2d6b 0%, #1a3f8f 100%);
+  }
+
+  .section-dark-about {
+    background: linear-gradient(160deg, #1a3060 0%, #243f82 100%);
+  }
+
+  .section-dark-construction {
+    background: linear-gradient(160deg, #112346 0%, #1c3564 100%);
+  }
+
+  .section-dark-contact {
+    background: linear-gradient(160deg, #0e1f55 0%, #1b3278 100%);
+  }
+
   .divider-glow {
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(126, 200, 227, 0.3), transparent);
