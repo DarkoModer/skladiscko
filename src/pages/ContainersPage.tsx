@@ -56,7 +56,7 @@ const ContainersPage: React.FC<ContainersPageProps> = ({ onPageChange }) => {
               Premium kontejnerji
             </h1>
             <p className="text-steel-400 text-lg leading-relaxed max-w-lg">
-              Trpežni, varni in vsestranški. Certificirana kakovost in hitra dostava po Sloveniji.
+              Trpežni, varni in vsestranski. Certificirana kakovost in hitra dostava po Sloveniji.
             </p>
           </div>
         </div>
