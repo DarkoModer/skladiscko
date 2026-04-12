@@ -159,22 +159,22 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border-2 border-amber-500 overflow-hidden hover-lift shadow-lg shadow-amber-500/10">
+            <div className="bg-white rounded-2xl border-2 border-steel-800 overflow-hidden hover-lift shadow-lg shadow-steel-800/10">
               <div className="relative h-52 overflow-hidden">
                 <img src={sotor} alt="Skladiščni šotor" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = 'https://images.pexels.com/photos/6069093/pexels-photo-6069093.jpeg?auto=compress&cs=tinysrgb&w=1200'; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 <div className="absolute top-3 left-3">
-                  <span className="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">Skladiščni šotor</span>
+                  <span className="bg-steel-800 text-white text-xs font-bold px-3 py-1 rounded-full">Skladiščni šotor</span>
                 </div>
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-amber-500 p-2 rounded-xl">
+                  <div className="bg-steel-800 p-2 rounded-xl">
                     <Home className="h-5 w-5 text-white" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-steel-900">Skladiščni šotor</h3>
-                    <p className="text-xs text-amber-600 font-medium">Za vozila, plovila in sezonsko blago</p>
+                    <p className="text-xs text-steel-700 font-medium">Za vozila, plovila in sezonsko blago</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2 mb-4">
@@ -185,15 +185,15 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                     { icon: <Shield className="h-4 w-4" />, text: 'Vremenska zaščita' },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-2 text-sm text-steel-700 font-medium">
-                      <span className="text-amber-500">{item.icon}</span>
+                      <span className="text-steel-700">{item.icon}</span>
                       {item.text}
                     </div>
                   ))}
                 </div>
-                <div className="bg-amber-500 rounded-xl p-4 flex items-center justify-between">
+                <div className="bg-steel-800 rounded-xl p-4 flex items-center justify-between">
                   <div>
-                    <span className="text-sm font-medium text-amber-100">Cena najema</span>
-                    <p className="text-xs text-amber-200">na mesec + DDV</p>
+                    <span className="text-sm font-medium text-steel-200">Cena najema</span>
+                    <p className="text-xs text-steel-400">na mesec + DDV</p>
                   </div>
                   <div className="text-right">
                     <span className="text-xl font-bold text-white">od 5 &euro;/m&sup2;</span>
