@@ -115,11 +115,8 @@ const ContainersPage: React.FC<ContainersPageProps> = ({ onPageChange }) => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   <div className="absolute top-3 left-3 flex gap-2">
-                    <span className={`text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm ${container.availability === 'Na zalogi' ? 'bg-emerald-500/90 text-white' : 'bg-amber-500/90 text-white'}`}>
+                    <span className={`text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm ${container.availability === 'Na zalogi' ? 'bg-emerald-500/90 text-white' : 'bg-blue-800/90 text-white'}`}>
                       {container.availability}
-                    </span>
-                    <span className="bg-steel-900/80 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
-                      {container.condition}
                     </span>
                   </div>
                 </div>
