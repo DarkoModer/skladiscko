@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -10,17 +10,17 @@ import ContactPage from './pages/ContactPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [pageKey, setPageKey] = useState(0);
 
   const handlePageChange = (page: string) => {
+    if (page === currentPage) return;
     setCurrentPage(page);
-    // Scroll to top when page changes
+    setPageKey((k) => k + 1);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'home':
-        return <HomePage onPageChange={handlePageChange} />;
       case 'containers':
         return <ContainersPage onPageChange={handlePageChange} />;
       case 'storage':
@@ -39,10 +39,10 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       <Header currentPage={currentPage} onPageChange={handlePageChange} />
-      <main>
+      <main key={pageKey} className="page-transition">
         {renderPage()}
       </main>
-      <Footer />
+      <Footer onPageChange={handlePageChange} />
     </div>
   );
 }

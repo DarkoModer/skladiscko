@@ -1,360 +1,221 @@
-import React from 'react';
-import { Container, Truck, Shield, Wrench, Star } from 'lucide-react';
+import { useState } from 'react';
+import { useInView } from '../hooks/useInView';
+import { Container, ArrowRight, Star, Shield, Truck, Wrench } from 'lucide-react';
 import antracit20 from '../Photos/20antracit.jpg';
 import antracit40 from '../Photos/40antracit.jpg';
 import rabljen20 from '../Photos/20rabljen.jpg';
 import rabljen40 from '../Photos/40rabljeni.jpg';
 import moder20 from '../Photos/20moder.avif';
 import moder40 from '../Photos/40moder.jpg';
-import pisarniski3 from '../Photos/pisarniski3mantracit.jpg'
-import pisarniski4 from '../Photos/pisarniski6m.jpg'
-import pisarniski6 from '../Photos/pisarniski6mbeli.jpg'
-
+import pisarniski3 from '../Photos/pisarniski3mantracit.jpg';
+import pisarniski4 from '../Photos/pisarniski6m.jpg';
+import pisarniski6 from '../Photos/pisarniski6mbeli.jpg';
 
 interface ContainersPageProps {
-    onPageChange?: (page: string) => void;
+  onPageChange?: (page: string) => void;
 }
 
+const containerTypes = [
+  { name: '20\' Nov Kontejner', dimensions: '6,06 m x 2,44 m x 2,59 m', condition: 'First Trip', availability: 'Na zalogi', floorArea: '14,8 m2', volume: '33,2 m3', price: '2.400', color: 'Modra, Antracit, Bez, Bela, Siva', imagePath: antracit20, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
+  { name: '40\' High Cube', dimensions: '12,19 m x 2,44 m x 2,89 m', condition: 'First Trip', availability: 'V prihodu', floorArea: '29,7 m2', volume: '76,3 m3', price: '3.790', color: 'Antracit, Modra', imagePath: antracit40, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
+  { name: '20\' Rabljen', dimensions: '6,06 m x 2,44 m x 2,89 m', condition: 'Second Trip', availability: 'Na zalogi', floorArea: '14,8 m2', volume: '37,4 m3', price: '2.290', color: 'Bela', imagePath: rabljen20, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
+  { name: '40\' Rabljen', dimensions: '12,19 m x 2,44 m x 2,89 m', condition: 'Rabljeno', availability: 'V prihodu', floorArea: '29,7 m2', volume: '76,3 m3', price: '2.990', color: '/', imagePath: rabljen40, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
+  { name: '20\' Nov Kontejner', dimensions: '6,06 m x 2,44 m x 2,59 m', condition: 'Novo', availability: 'V prihodu', floorArea: '14,8 m2', volume: '33,2 m3', price: '2.***', color: 'Modra, Antracit, Bez, Bela, Crna', imagePath: moder20, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
+  { name: '40\' Nov Kontejner', dimensions: '12,19 m x 2,44 m x 2,59 m', condition: 'Novo', availability: 'V prihodu', floorArea: '29,7 m2', volume: '67,7 m3', price: '3.***', color: 'Modra, Antracit, Bez, Bela, Crna', imagePath: moder40, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
+  { name: 'Pisarniski 3m', dimensions: '3 m x 2,4 m x 2,6 m', condition: 'Novo', availability: 'Na zalogi', floorArea: '6,66 m2', volume: '15,9 m3', price: '3.200', color: 'Bela, Antracit', imagePath: pisarniski3, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
+  { name: 'Pisarniski 4m', dimensions: '4 m x 2,4 m x 2,6 m', condition: 'Novo', availability: 'Na zalogi', floorArea: '9,4 m2', volume: '22,5 m3', price: '3.500', color: 'Bela, Antracit', imagePath: pisarniski4, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
+  { name: 'Pisarniski 5m', dimensions: '5 m x 2,4 m x 2,6 m', condition: 'Novo', availability: 'Na zalogi', floorArea: '14,1 m2', volume: '33,7 m3', price: '3.800', color: 'Bela, Antracit', imagePath: pisarniski6, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
+];
+
+const filters = ['Vsi', 'Novi', 'Rabljeni', 'Pisarniski'];
+
 const ContainersPage: React.FC<ContainersPageProps> = ({ onPageChange }) => {
-    const containerTypes = [
-        {
-            name: '20\' Nov Kontejner',
-            dimensions: '6,06 m × 2,44 m × 2,59 m',
-            condition: 'First Trip',
-            availability: 'Na zalogi',
-            floorArea: '14,8 m²',
-            volume: '33,2 m³',
-            price: '2.400 €',
-            color: 'Modra, Antracit, Bež, Bela, Siva',
-            imagePath: antracit20,
-            fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=1200'
-        },
-        {
-            name: '40\' High Cube Kontejner',
-            dimensions: '12,19 m × 2,44 m × 2,89 m',
-            condition: 'First Trip',
-            availability: 'V prihodu',
-            floorArea: '29,7 m²',
-            volume: '76,3 m³',
-            price: '3.790 €',
-            color: 'Antracit, Modra',
-            imagePath: antracit40,
-            fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=1200'
-        },
-        {
-            name: '20\' Rabljen Kontejner',
-            dimensions: '6,06 m × 2,44 m × 2,89 m',
-            condition: 'Second Trip',
-            availability: 'Na zalogi',
-            floorArea: '14,8 m²',
-            volume: '37,4 m³',
-            price: '2.290 €',
-            color: 'Bela',
-            imagePath: rabljen20,
-            fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=1200'
-        },
-        {
-            name: '40\' Rabljen Kontejner',
-            dimensions: '12,19 m × 2,44 m × 2,89 m',
-            condition: 'Rabljeno',
-            availability: 'V prihodu',
-            floorArea: '29,7 m²',
-            volume: '76,3 m³',
-            price: '2.990 €',
-            color: '/',
-            imagePath: rabljen40,
-            fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=1200'
-        },
-        {
-            name: '20\' Nov Kontejner',
-            dimensions: '6,06 m × 2,44 m × 2,59 m',
-            condition: 'Novo',
-            availability: 'V prihodu',
-            floorArea: '14,8 m²',
-            volume: '33,2 m³',
-            price: '2.*** €',
-            color: 'Modra, Antracit, Bež, Bela, Črna',
-            imagePath: moder20,
-            fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=1200'
-        },
-        {
-            name: '40\' Nov Kontejner',
-            dimensions: '12,19 m × 2,44 m × 2,59 m',
-            condition: 'Novo',
-            availability: 'V prihodu',
-            floorArea: '29,7 m²',
-            volume: '67,7 m³',
-            price: '3.*** €',
-            color: 'Modra, Antracit, Bež, Bela, Črna',
-            imagePath: moder40,
-            fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=1200'
-        },
-        {
-            name: 'Izoliran pisarniški kontejner',
-            dimensions: '3 m × 2,4 m × 2,6 m',
-            condition: 'Novo',
-            availability: 'Na zalogi',
-            floorArea: '6,66 m²',
-            volume: '15,9 m³',
-            price: '3.200 €',
-            color: 'Bela, Antracit',
-            imagePath: pisarniski3,
-            fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=1200'
-        },
-        {
-            name: 'Izoliran pisarniški kontejner',
-            dimensions: '4 m × 2,4 m × 2,6 m',
-            condition: 'Novo',
-            availability: 'Na zalogi',
-            floorArea: '9,4 m²',
-            volume: '22,5 m³',
-            price: '3.500 €',
-            color: 'Bela, Antracit',
-            imagePath: pisarniski4,
-            fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=1200'
-        },
-        {
-            name: 'Izoliran pisarniški kontejner',
-            dimensions: '5 m × 2,4 m × 2,6 m',
-            condition: 'Novo',
-            availability: 'Na zalogi',
-            floorArea: '14,1 m²',
-            volume: '33,7 m³',
-            price: '3.800 €',
-            color: 'Bela, Antracit',
-            imagePath: pisarniski6,
-            fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=1200'
-        }
-    ];
+  const [activeFilter, setActiveFilter] = useState('Vsi');
+  const hero = useInView();
+  const grid = useInView();
+  const features = useInView();
 
-    const modifications = [
-        'Rolo vrata',
-        'Okna in prezračevanje',
-        'Električna napeljava',
-        'Izolacijski paketi',
-        'Notranje predelne stene',
-        'Barve po meri'
-    ];
+  const filtered = containerTypes.filter((c) => {
+    if (activeFilter === 'Vsi') return true;
+    if (activeFilter === 'Novi') return c.condition === 'First Trip' || (c.condition === 'Novo' && !c.name.includes('Pisarniski'));
+    if (activeFilter === 'Rabljeni') return c.condition === 'Second Trip' || c.condition === 'Rabljeno';
+    if (activeFilter === 'Pisarniski') return c.name.includes('Pisarniski');
+    return true;
+  });
 
-    return (
-        <div className="min-h-screen bg-white">
-            {/* Hero Section */}
-            <section className="bg-gradient-to-br from-slate-900 via-blue-900 to-blue-800 py-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-12">
-                        <div className="bg-blue-500/20 backdrop-blur-sm border border-blue-400/30 p-4 rounded-full w-fit mx-auto mb-6">
-                            <Container className="h-12 w-12 text-blue-300" />
-                        </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                            Premium kontejnerji
-                        </h1>
-                        <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-                            Trpežni, varni in vsestranski kontejnerji za vse vaše potrebe.
-                            Certificirana kakovost in hitra dostava po Sloveniji.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            {/* Facebook Inventory Notice */}
-            <section className="py-12 bg-gradient-to-r from-blue-600 to-blue-800">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border-2 border-white/20 text-center">
-                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                            Aktualna zaloga kontejnerjev
-                        </h3>
-                        <p className="text-lg text-blue-100 mb-6">
-                            Za najnovejše informacije o razpoložljivosti in aktualnih cenah nas sledite na Facebooku
-                        </p>
-                        <a
-                            href="https://www.facebook.com/profile.php?id=61577763940228"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
-                        >
-                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                            </svg>
-                            Obiščite nas na Facebooku
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            {/* Container Types */}
-            <section className="py-20 bg-gradient-to-b from-white to-blue-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
-                            Premium izbor kontejnerjev
-                        </h2>
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                            Skrbno izbrani kontejnerji za vsako potrebo - od standardnih do premium rešitev
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {containerTypes.map((container, index) => (
-                            <div
-                                key={index}
-                                className="group bg-white rounded-2xl overflow-hidden transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl"
-                            >
-                                <div className="relative h-72 bg-gray-100 overflow-hidden">
-                                    <img
-                                        src={container.imagePath}
-                                        alt={container.name}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        onError={(e) => {
-                                            e.currentTarget.src = container.fallbackImage;
-                                        }}
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                                    <div className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                                        {container.availability}
-                                    </div>
-
-                                    <div className="absolute top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                                        {container.condition}
-                                    </div>
-                                </div>
-
-                                <div className="p-6">
-                                    <h3 className="text-2xl font-bold text-blue-900 mb-4 group-hover:text-blue-600 transition-colors">
-                                        {container.name}
-                                    </h3>
-                                    <p className="text-gray-600 mb-4 font-medium">{container.dimensions}</p>
-
-                                    <div className="mb-4 bg-gradient-to-r from-blue-50 to-blue-100 p-3 rounded-lg">
-                                        <div className="text-sm text-gray-700 font-semibold">Barva:</div>
-                                        <div className="text-lg font-bold text-blue-900">{container.color}</div>
-                                    </div>
-
-                                    <div className="grid grid-cols-2 gap-3 mb-6">
-                                        <div className="bg-blue-50 p-3 rounded-lg text-center">
-                                            <div className="text-xs text-gray-600 mb-1">Površina</div>
-                                            <div className="font-bold text-blue-900">{container.floorArea}</div>
-                                        </div>
-                                        <div className="bg-blue-50 p-3 rounded-lg text-center">
-                                            <div className="text-xs text-gray-600 mb-1">Prostornina</div>
-                                            <div className="font-bold text-blue-900">{container.volume}</div>
-                                        </div>
-                                    </div>
-
-                                    <div className="border-t pt-4 flex items-center justify-between">
-                                        <div>
-                                            <div className="text-xs text-gray-500 mb-1">Cena</div>
-                                            <div className="text-3xl font-bold text-blue-600">{container.price}</div>
-                                        </div>
-                                        <button
-                                            onClick={() => onPageChange?.('contact')}
-                                            className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                                        >
-                                            Povprašaj
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="mt-12 text-center">
-                        <div className="bg-white p-6 rounded-2xl shadow-lg inline-block max-w-2xl">
-                            <p className="text-gray-700 mb-2">
-                                <span className="font-bold text-blue-600">Cene NE vključujejo DDV. </span>
-                                Dostava in postavitev se zaračunata posebej glede na lokacijo.
-                            </p>
-                            <p className="text-sm text-gray-500">
-                                Za podrobnosti o dostavi in posebnih prilagoditvah nas kontaktirajte.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Features Section */}
-            <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-10 rounded-3xl shadow-2xl text-white">
-                            <h2 className="text-3xl md:text-4xl font-bold mb-8">
-                                Zakaj izbrati naše kontejnerje?
-                            </h2>
-                            <div className="space-y-6">
-                                <div className="flex items-start space-x-4">
-                                    <div className="bg-white/20 backdrop-blur-sm p-3 rounded-lg">
-                                        <Shield className="h-6 w-6 text-white" />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-semibold mb-2">Vrhunska kakovost</h3>
-                                        <p className="text-blue-100">Cor-ten jeklo, odporno proti rji in koroziji za dolgotrajno uporabo.</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start space-x-4">
-                                    <div className="bg-white/20 backdrop-blur-sm p-3 rounded-lg">
-                                        <Truck className="h-6 w-6 text-white" />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-semibold mb-2">Hitra dostava</h3>
-                                        <p className="text-blue-100">Ekspresna dostava in strokovna postavitev po celotni Sloveniji.</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start space-x-4">
-                                    <div className="bg-white/20 backdrop-blur-sm p-3 rounded-lg">
-                                        <Wrench className="h-6 w-6 text-white" />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-semibold mb-2">Prilagoditve</h3>
-                                        <p className="text-blue-100">Možnost prilagoditve kontejnerja po vaših željah in potrebah.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="bg-white p-10 rounded-3xl shadow-xl border border-gray-100">
-                            <h3 className="text-2xl font-bold text-gray-900 mb-6">Možne prilagoditve</h3>
-                            <div className="grid grid-cols-2 gap-4 mb-8">
-                                {modifications.map((mod, index) => (
-                                    <div key={index} className="flex items-center space-x-2">
-                                        <Star className="h-5 w-5 text-yellow-500" />
-                                        <span className="text-gray-700">{mod}</span>
-                                    </div>
-                                ))}
-                            </div>
-                            <button
-                                onClick={() => onPageChange?.('contact')}
-                                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl"
-                            >
-                                Zahtevajte ponudbo po meri
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA Section */}
-            <section className="py-20 bg-gradient-to-br from-slate-900 to-blue-900">
-                <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                        Pripravite se na nakup kontejnerja?
-                    </h2>
-                    <p className="text-xl text-blue-200 mb-8">
-                        Kontaktirajte nas za brezplačno svetovanje in konkurenčno ponudbo
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button
-                            onClick={() => onPageChange?.('contact')}
-                            className="bg-white text-blue-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-50 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
-                        >
-                            Pridobite ponudbo
-                        </button>
-                        <button className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all duration-300">
-                            Pokličite 069 633 480
-                        </button>
-                    </div>
-                </div>
-            </section>
+  return (
+    <div>
+      <section className="relative bg-slate-950 pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-3xl" />
         </div>
-    );
+        <div ref={hero.ref} className="relative max-w-7xl mx-auto px-5 sm:px-8">
+          <div className={`max-w-2xl transition-all duration-700 ${hero.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4">Ponudba kontejnerjev</p>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
+              Premium kontejnerji
+            </h1>
+            <p className="text-slate-400 text-lg leading-relaxed max-w-lg">
+              Trpezni, varni in vsestranski. Certificirana kakovost in hitra dostava po Sloveniji.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div ref={grid.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className={`flex flex-wrap items-center justify-between gap-4 mb-10 transition-all duration-700 ${grid.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="flex gap-2">
+              {filters.map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setActiveFilter(f)}
+                  className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                    activeFilter === f
+                      ? 'bg-slate-900 text-white'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  }`}
+                >
+                  {f}
+                </button>
+              ))}
+            </div>
+            <a
+              href="https://www.facebook.com/profile.php?id=61577763940228"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-blue-600 font-medium hover:underline"
+            >
+              Aktualna zaloga na Facebooku
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filtered.map((container, index) => (
+              <div
+                key={index}
+                className={`group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-500 ${grid.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: grid.isVisible ? `${index * 80}ms` : '0ms' }}
+              >
+                <div className="relative h-56 bg-gray-50 overflow-hidden">
+                  <img
+                    src={container.imagePath}
+                    alt={container.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    onError={(e) => { e.currentTarget.src = container.fallbackImage; }}
+                  />
+                  <div className="absolute top-3 left-3 flex gap-2">
+                    <span className="bg-white/90 backdrop-blur-sm text-slate-700 text-xs font-semibold px-3 py-1 rounded-full">
+                      {container.availability}
+                    </span>
+                    <span className="bg-slate-900/80 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
+                      {container.condition}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">{container.name}</h3>
+                  <p className="text-sm text-gray-500 mb-3">{container.dimensions}</p>
+                  <div className="flex gap-3 mb-4">
+                    <div className="bg-gray-50 px-3 py-1.5 rounded-lg text-center flex-1">
+                      <div className="text-xs text-gray-400">Povrsina</div>
+                      <div className="text-sm font-semibold text-gray-800">{container.floorArea}</div>
+                    </div>
+                    <div className="bg-gray-50 px-3 py-1.5 rounded-lg text-center flex-1">
+                      <div className="text-xs text-gray-400">Volumen</div>
+                      <div className="text-sm font-semibold text-gray-800">{container.volume}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div>
+                      <div className="text-2xl font-bold text-gray-900">{container.price} &euro;</div>
+                      <div className="text-xs text-gray-400">+ DDV</div>
+                    </div>
+                    <button
+                      onClick={() => onPageChange?.('contact')}
+                      className="bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-slate-800 transition-colors"
+                    >
+                      Povprasaj
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-sm text-gray-500">
+              Cene NE vkljucujejo DDV. Dostava in postavitev se zaracunata posebej.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-gray-50">
+        <div ref={features.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 transition-all duration-700 ${features.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="bg-slate-950 p-10 rounded-2xl text-white">
+              <h2 className="text-2xl font-bold mb-8">Zakaj nasi kontejnerji?</h2>
+              <div className="space-y-6">
+                {[
+                  { icon: <Shield className="h-5 w-5" />, title: 'Vrhunska kakovost', desc: 'Cor-ten jeklo, odporno proti rji in koroziji.' },
+                  { icon: <Truck className="h-5 w-5" />, title: 'Hitra dostava', desc: 'Ekspresna dostava in strokovna postavitev.' },
+                  { icon: <Wrench className="h-5 w-5" />, title: 'Prilagoditve', desc: 'Moznost prilagoditve po vasih zeljah.' },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4">
+                    <div className="bg-white/10 p-2.5 rounded-xl h-fit">{item.icon}</div>
+                    <div>
+                      <h3 className="font-semibold mb-1">{item.title}</h3>
+                      <p className="text-sm text-slate-400">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-white p-10 rounded-2xl border border-gray-100">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Mozne prilagoditve</h3>
+              <div className="grid grid-cols-2 gap-3 mb-8">
+                {['Rolo vrata', 'Okna in prezracevanje', 'Elektricna napeljava', 'Izolacijski paketi', 'Notranje stene', 'Barve po meri'].map((mod, i) => (
+                  <div key={i} className="flex items-center gap-2.5">
+                    <Star className="h-4 w-4 text-amber-500" />
+                    <span className="text-gray-700 text-sm">{mod}</span>
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={() => onPageChange?.('contact')}
+                className="w-full bg-slate-900 text-white py-3.5 rounded-full font-semibold hover:bg-slate-800 transition-colors flex items-center justify-center gap-2 group"
+              >
+                Ponudba po meri
+                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-950">
+        <div className="max-w-3xl mx-auto text-center px-5 sm:px-8">
+          <h2 className="text-3xl font-bold text-white mb-4">Pripravite se na nakup?</h2>
+          <p className="text-slate-400 mb-8">Brezplacno svetovanje in konkurencna ponudba</p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <button
+              onClick={() => onPageChange?.('contact')}
+              className="bg-blue-600 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-blue-500 transition-colors"
+            >
+              Pridobite ponudbo
+            </button>
+            <a
+              href="tel:069633480"
+              className="border border-white/20 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-white/5 transition-colors"
+            >
+              069 633 480
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 };
 
 export default ContainersPage;

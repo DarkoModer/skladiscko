@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import { useState } from 'react';
+import { useInView } from '../hooks/useInView';
+import { Phone, Mail, MapPin, Send, ChevronDown } from 'lucide-react';
+
+const faqs = [
+  { q: 'Kako hitro lahko dostavite kontejner?', a: 'Vecino kontejnerjev dostavimo v 2-3 delovnih dneh, odvisno od lokacije in razpolozljivosti.' },
+  { q: 'Ali ponujate moznosti financiranja?', a: 'Da, ponujamo prilagodljive moznosti placila za nakup kontejnerjev in izvedbo projektov.' },
+  { q: 'Koliko casa traja izvedba projekta?', a: 'Vecina projektov je dokoncanih v 2-4 tednih od zacetka del.' },
+  { q: 'Ali nudite garancijo na izvedena dela?', a: 'Da, na vsa nasa dela nudimo 2-letno garancijo, na kontejnerje pa standardno garancijo proizvajalca.' },
+];
 
 const ContactPage: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: ''
-  });
-
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', service: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const hero = useInView();
+  const form = useInView();
+  const faqSection = useInView();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,33 +27,17 @@ const ContactPage: React.FC = () => {
     try {
       const response = await fetch('https://skladiscko.si/api/send-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          service: formData.service,
-          message: formData.message
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
         setSubmitStatus('success');
-
-        // Reset form after successful submission
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          service: '',
-          message: ''
-        });
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
       } else {
         setSubmitStatus('error');
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -55,266 +45,172 @@ const ContactPage: React.FC = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
-      <div className="min-h-screen bg-white">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-slate-900 via-blue-900 to-blue-800 py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Stopite v stik
-              </h1>
-              <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
-                Naša ekipa je pripravljena vam pomagati. Kontaktirajte nas za brezplačno svetovanje
-                in konkurenčno ponudbo za vaš projekt.
-              </p>
-            </div>
+    <div>
+      <section className="relative bg-slate-950 pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-3xl" />
+        </div>
+        <div ref={hero.ref} className="relative max-w-7xl mx-auto px-5 sm:px-8">
+          <div className={`max-w-2xl transition-all duration-700 ${hero.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4">Kontakt</p>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
+              Stopite v stik
+            </h1>
+            <p className="text-slate-400 text-lg leading-relaxed max-w-lg">
+              Nasa ekipa je pripravljena vam pomagati. Brezplacno svetovanje in konkurencna ponudba.
+            </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Contact Information & Form */}
-        <section className="py-20 bg-gradient-to-b from-white to-slate-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Contact Information */}
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-8">Kontaktni podatki</h2>
+      <section className="py-20 bg-white">
+        <div ref={form.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className={`grid grid-cols-1 lg:grid-cols-5 gap-10 transition-all duration-700 ${form.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="lg:col-span-2 space-y-6">
+              <h2 className="text-2xl font-bold text-gray-900">Kontaktni podatki</h2>
 
-                <div className="space-y-6 mb-8">
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-3 rounded-xl">
-                      <Phone className="h-6 w-6 text-white" />
+              <div className="space-y-5">
+                {[
+                  { icon: <Phone className="h-5 w-5" />, label: 'Telefon', value: '069 633 480', sub: 'Na voljo 24/7', href: 'tel:069633480' },
+                  { icon: <Mail className="h-5 w-5" />, label: 'E-posta', value: 'info@skladiscko.si', sub: 'Odgovorimo v 24 urah', href: 'mailto:info@skladiscko.si' },
+                  { icon: <MapPin className="h-5 w-5" />, label: 'Naslov', value: 'Puhova ulica 12a', sub: '2250 Ptuj' },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4">
+                    <div className="bg-gray-50 p-2.5 rounded-xl text-gray-600 h-fit">
+                      {item.icon}
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">Telefon</h3>
-                      <p className="text-gray-600 font-medium">069 633 480</p>
-                      <p className="text-sm text-gray-500">Na voljo 24/7</p>
+                      <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">{item.label}</p>
+                      {item.href ? (
+                        <a href={item.href} className="font-semibold text-gray-900 hover:text-blue-600 transition-colors">{item.value}</a>
+                      ) : (
+                        <p className="font-semibold text-gray-900">{item.value}</p>
+                      )}
+                      <p className="text-sm text-gray-500">{item.sub}</p>
                     </div>
                   </div>
-
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-3 rounded-xl">
-                      <Mail className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">E-pošta</h3>
-                      <p className="text-gray-600 font-medium">info@skladiscko.si</p>
-                      <p className="text-sm text-gray-500">Odgovorimo v 24 urah</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-3 rounded-xl">
-                      <MapPin className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">Naslov</h3>
-                      <p className="text-gray-600 font-medium">Puhova ulica 12a<br />2250 Ptuj</p>
-                      <p className="text-sm text-gray-500">Obiščite nas po dogovoru</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-3 rounded-xl">
-                      <Clock className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">Delovni čas</h3>
-                      <div className="text-gray-600">
-                        <p className="font-semibold">24/7 na voljo</p>
-                        <p className="text-sm text-gray-500">Vedno dosegljivi</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Service Areas */}
-                <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-8 rounded-2xl shadow-xl text-white">
-                  <h3 className="text-xl font-bold mb-4">Območja storitev</h3>
-                  <p className="text-blue-100 mb-6">Naše storitve nudimo po celotni Sloveniji</p>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-cyan-300 rounded-full mr-2"></div>
-                      Ptuj in okolica
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-cyan-300 rounded-full mr-2"></div>
-                      Maribor
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-cyan-300 rounded-full mr-2"></div>
-                      Ljubljana
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-cyan-300 rounded-full mr-2"></div>
-                      Celje
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
 
-              {/* Contact Form */}
-              <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
-                <h2 className="text-3xl font-bold text-gray-900 mb-8">Pošljite nam sporočilo</h2>
+              <div className="bg-slate-950 p-6 rounded-2xl text-white">
+                <h3 className="font-semibold mb-3">Obmocja storitev</h3>
+                <div className="grid grid-cols-2 gap-2 text-sm text-slate-300">
+                  <span>Ptuj in okolica</span>
+                  <span>Maribor</span>
+                  <span>Ljubljana</span>
+                  <span>Celje</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-3">
+              <div className="bg-gray-50 p-6 md:p-8 rounded-2xl">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Posljite sporocilo</h2>
 
                 {submitStatus === 'success' && (
-                    <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                      <p className="text-green-800">Vaše povpraševanje je bilo uspešno poslano.</p>
-                    </div>
+                  <div className="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
+                    <p className="text-emerald-800 text-sm">Vase povprasevanje je bilo uspesno poslano.</p>
+                  </div>
                 )}
 
                 {submitStatus === 'error' && (
-                    <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                      <p className="text-red-800">Prišlo je do napake. Prosimo pokličite nas na 069 633 480 ali pošljite e-pošto na info@skladiscko.si</p>
-                    </div>
+                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
+                    <p className="text-red-800 text-sm">Prislo je do napake. Poklichite nas na 069 633 480.</p>
+                  </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                        Polno ime *
-                      </label>
-                      <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          required
-                          value={formData.name}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                          placeholder="Vaše polno ime"
-                      />
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">Ime *</label>
+                      <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange}
+                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none"
+                        placeholder="Vase ime" />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                        E-poštni naslov *
-                      </label>
-                      <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          required
-                          value={formData.email}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                          placeholder="vas@email.si"
-                      />
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">E-posta *</label>
+                      <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange}
+                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none"
+                        placeholder="vas@email.si" />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                        Telefonska številka
-                      </label>
-                      <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                          placeholder="069 123 456"
-                      />
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1.5">Telefon</label>
+                      <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange}
+                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none"
+                        placeholder="069 123 456" />
                     </div>
                     <div>
-                      <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                        Zanimanje za storitev
-                      </label>
-                      <select
-                          id="service"
-                          name="service"
-                          value={formData.service}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                      >
+                      <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1.5">Storitev</label>
+                      <select id="service" name="service" value={formData.service} onChange={handleChange}
+                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none">
                         <option value="">Izberite storitev</option>
                         <option value="Kontejnerji - nakup">Kontejnerji - nakup</option>
                         <option value="Kontejnerji - najem">Kontejnerji - najem</option>
-                        <option value="Skladiščne rešitve">Skladiščne rešitve</option>
+                        <option value="Skladiscne resitve">Skladiscne resitve</option>
                         <option value="Priprava terena">Priprava terena</option>
-                        <option value="Splošno svetovanje">Splošno svetovanje</option>
+                        <option value="Splosno svetovanje">Splosno svetovanje</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                      Sporočilo *
-                    </label>
-                    <textarea
-                        id="message"
-                        name="message"
-                        required
-                        rows={6}
-                        value={formData.message}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
-                        placeholder="Povejte nam o vaših potrebah, lokaciji projekta in časovnem okviru..."
-                    ></textarea>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1.5">Sporocilo *</label>
+                    <textarea id="message" name="message" required rows={5} value={formData.message} onChange={handleChange}
+                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none resize-none"
+                      placeholder="Povejte nam o vasih potrebah..." />
                   </div>
 
                   <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 px-6 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-slate-900 text-white py-3.5 rounded-full font-semibold hover:bg-slate-800 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <Send className="h-5 w-5" />
-                    <span>{isSubmitting ? 'Pošiljam...' : 'Pošlji sporočilo'}</span>
+                    <Send className="h-4 w-4" />
+                    {isSubmitting ? 'Posiljam...' : 'Poslji sporocilo'}
                   </button>
-
-                  <p className="text-sm text-gray-500 text-center">
-                    Odgovorili vam bomo v najkrajšem možnem času. Za nujne zadeve nas prosimo pokličite neposredno.
-                  </p>
                 </form>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* FAQ Section */}
-        <section className="py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Pogosto zastavljena vprašanja
-              </h2>
-              <p className="text-xl text-gray-600">
-                Hitri odgovori na najpogostejša vprašanja
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:border-blue-300 transition-colors">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Kako hitro lahko dostavite kontejner?</h3>
-                <p className="text-gray-600">Večino kontejnerjev lahko dostavimo v 2-3 delovnih dneh, odvisno od vaše lokacije in razpoložljivosti.</p>
-              </div>
-
-              <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:border-blue-300 transition-colors">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Ali ponujate možnosti financiranja?</h3>
-                <p className="text-gray-600">Da, ponujamo prilagodljive možnosti plačila za nakup kontejnerjev in izvedbo skladiščnih projektov.</p>
-              </div>
-
-              <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:border-blue-300 transition-colors">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Koliko časa traja izvedba skladiščnega projekta?</h3>
-                <p className="text-gray-600">Odvisno od velikosti projekta, vendar je večina projektov dokončanih v 2-4 tednih od začetka del.</p>
-              </div>
-
-              <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:border-blue-300 transition-colors">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Ali nudite garancijo na izvedena dela?</h3>
-                <p className="text-gray-600">Da, na vsa naša dela nudimo 2-letno garancijo, na kontejnerje pa standardno garancijo proizvajalca.</p>
-              </div>
-            </div>
+      <section className="py-20 bg-gray-50">
+        <div ref={faqSection.ref} className="max-w-3xl mx-auto px-5 sm:px-8">
+          <div className={`text-center mb-10 transition-all duration-700 ${faqSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Pogosta vprasanja</h2>
           </div>
-        </section>
-      </div>
+
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <div
+                key={i}
+                className={`bg-white rounded-xl border border-gray-100 overflow-hidden transition-all duration-500 ${faqSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                style={{ transitionDelay: faqSection.isVisible ? `${i * 80}ms` : '0ms' }}
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full flex items-center justify-between p-5 text-left"
+                >
+                  <span className="font-semibold text-gray-900 pr-4">{faq.q}</span>
+                  <ChevronDown className={`h-5 w-5 text-gray-400 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`} />
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-40 pb-5' : 'max-h-0'}`}>
+                  <p className="px-5 text-sm text-gray-600 leading-relaxed">{faq.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 
