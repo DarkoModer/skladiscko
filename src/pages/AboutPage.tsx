@@ -7,10 +7,10 @@ interface AboutPageProps {
 }
 
 const values = [
-  { icon: <Target className="h-5 w-5" />, title: 'Zanesljivost', desc: 'Vsak projekt izvedemo pravočasno in kakovostno.' },
-  { icon: <Users className="h-5 w-5" />, title: 'Prilagodljivost', desc: 'Iščemo optimalne rešitve za vsak projekt.' },
-  { icon: <Award className="h-5 w-5" />, title: 'Kakovost', desc: 'Kakovostni materiali in preverjene tehnologije.' },
-  { icon: <Heart className="h-5 w-5" />, title: 'Poštenost', desc: 'Transparentna komunikacija in poštene cene.' },
+  { icon: <Target className="h-5 w-5" />, title: 'Zanesljivost', desc: 'Vsak projekt izvedemo pravočasno in kakovostno.', bg: 'bg-blue-50 text-blue-700' },
+  { icon: <Users className="h-5 w-5" />, title: 'Prilagodljivost', desc: 'Iščemo optimalne rešitve za vsak projekt.', bg: 'bg-sky-50 text-sky-700' },
+  { icon: <Award className="h-5 w-5" />, title: 'Kakovost', desc: 'Kakovostni materiali in preverjene tehnologije.', bg: 'bg-amber-50 text-amber-600' },
+  { icon: <Heart className="h-5 w-5" />, title: 'Poštenost', desc: 'Transparentna komunikacija in poštene cene.', bg: 'bg-red-50 text-red-500' },
 ];
 
 const timeline = [
@@ -88,7 +88,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onPageChange }) => {
                 className={`card-steel p-6 text-center hover-lift ${valuesSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 style={{ transitionDelay: valuesSection.isVisible ? `${i * 100}ms` : '0ms', transition: 'opacity 0.5s, transform 0.5s' }}
               >
-                <div className="inline-flex items-center justify-center w-10 h-10 bg-steel-50 text-steel-700 rounded-xl mb-4">
+                <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl mb-4 ${value.bg}`}>
                   {value.icon}
                 </div>
                 <h3 className="font-bold text-steel-900 mb-2">{value.title}</h3>
@@ -108,20 +108,23 @@ const AboutPage: React.FC<AboutPageProps> = ({ onPageChange }) => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-4">
-              {timeline.map((item, i) => (
-                <div
-                  key={i}
-                  className={`flex items-start gap-4 transition-all duration-500 ${timelineSection.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
-                  style={{ transitionDelay: timelineSection.isVisible ? `${i * 80}ms` : '0ms' }}
-                >
-                  <span className="bg-gradient-to-br from-steel-800 to-steel-900 text-white text-sm font-bold px-3 py-1.5 rounded-full flex-shrink-0">
-                    {item.year}
-                  </span>
-                  <div className="bg-steel-50 p-4 rounded-xl flex-1">
-                    <p className="text-sm text-steel-700">{item.event}</p>
+              {timeline.map((item, i) => {
+                const isLatest = i === timeline.length - 1;
+                return (
+                  <div
+                    key={i}
+                    className={`flex items-start gap-4 transition-all duration-500 ${timelineSection.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
+                    style={{ transitionDelay: timelineSection.isVisible ? `${i * 80}ms` : '0ms' }}
+                  >
+                    <span className={`text-white text-sm font-bold px-3 py-1.5 rounded-full flex-shrink-0 shadow-sm ${isLatest ? 'bg-gradient-to-br from-amber-500 to-amber-400 shadow-amber-500/30' : 'bg-gradient-to-br from-blue-700 to-blue-800'}`}>
+                      {item.year}
+                    </span>
+                    <div className={`p-4 rounded-xl flex-1 border ${isLatest ? 'bg-amber-50 border-amber-100' : 'bg-steel-50 border-transparent'}`}>
+                      <p className={`text-sm font-medium ${isLatest ? 'text-amber-800' : 'text-steel-700'}`}>{item.event}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             <div className="lg:sticky lg:top-24">

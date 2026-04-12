@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useInView } from '../hooks/useInView';
-import { ArrowRight, Star, Shield, Truck, Wrench, ExternalLink } from 'lucide-react';
+import { ArrowRight, Star, Shield, Truck, Wrench, ExternalLink, Sparkles } from 'lucide-react';
 import antracit20 from '../Photos/20antracit.jpg';
 import antracit40 from '../Photos/40antracit.jpg';
 import rabljen20 from '../Photos/20rabljen.jpg';
@@ -20,8 +20,8 @@ const containerTypes = [
   { name: '40\' High Cube', dimensions: '12,19 m x 2,44 m x 2,89 m', condition: 'First Trip', availability: 'V prihodu', floorArea: '29,7 m\u00B2', volume: '76,3 m\u00B3', price: '3.790', color: 'Antracit, Modra', imagePath: antracit40, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
   { name: '20\' Rabljen', dimensions: '6,06 m x 2,44 m x 2,89 m', condition: 'Second Trip', availability: 'Na zalogi', floorArea: '14,8 m\u00B2', volume: '37,4 m\u00B3', price: '2.290', color: 'Bela', imagePath: rabljen20, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
   { name: '40\' Rabljen', dimensions: '12,19 m x 2,44 m x 2,89 m', condition: 'Rabljeno', availability: 'V prihodu', floorArea: '29,7 m\u00B2', volume: '76,3 m\u00B3', price: '2.990', color: '/', imagePath: rabljen40, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
-  { name: '20\' Nov Kontejner', dimensions: '6,06 m x 2,44 m x 2,59 m', condition: 'Novo', availability: 'V prihodu', floorArea: '14,8 m\u00B2', volume: '33,2 m\u00B3', price: '2.***', color: 'Modra, Antracit, Bež, Bela, Črna', imagePath: moder20, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
-  { name: '40\' Nov Kontejner', dimensions: '12,19 m x 2,44 m x 2,59 m', condition: 'Novo', availability: 'V prihodu', floorArea: '29,7 m\u00B2', volume: '67,7 m\u00B3', price: '3.***', color: 'Modra, Antracit, Bež, Bela, Črna', imagePath: moder40, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
+  { name: "20' Nov Kontejner", dimensions: '6,06 m x 2,44 m x 2,59 m', condition: 'Novo', availability: 'V prihodu', floorArea: '14,8 m\u00B2', volume: '33,2 m\u00B3', price: '2.***', color: 'Modra, Antracit, Bež, Bela, Črna', imagePath: moder20, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800', isNew: true },
+  { name: "40' Nov Kontejner", dimensions: '12,19 m x 2,44 m x 2,59 m', condition: 'Novo', availability: 'V prihodu', floorArea: '29,7 m\u00B2', volume: '67,7 m\u00B3', price: '3.***', color: 'Modra, Antracit, Bež, Bela, Črna', imagePath: moder40, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800', isNew: true },
   { name: 'Pisarniški 3m', dimensions: '3 m x 2,4 m x 2,6 m', condition: 'Novo', availability: 'Na zalogi', floorArea: '6,66 m\u00B2', volume: '15,9 m\u00B3', price: '3.200', color: 'Bela, Antracit', imagePath: pisarniski3, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
   { name: 'Pisarniški 4m', dimensions: '4 m x 2,4 m x 2,6 m', condition: 'Novo', availability: 'Na zalogi', floorArea: '9,4 m\u00B2', volume: '22,5 m\u00B3', price: '3.500', color: 'Bela, Antracit', imagePath: pisarniski4, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
   { name: 'Pisarniški 5m', dimensions: '5 m x 2,4 m x 2,6 m', condition: 'Novo', availability: 'Na zalogi', floorArea: '14,1 m\u00B2', volume: '33,7 m\u00B3', price: '3.800', color: 'Bela, Antracit', imagePath: pisarniski6, fallbackImage: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800' },
@@ -95,9 +95,17 @@ const ContainersPage: React.FC<ContainersPageProps> = ({ onPageChange }) => {
             {filtered.map((container, index) => (
               <div
                 key={index}
-                className={`group card-steel overflow-hidden hover-lift ${grid.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                className={`group overflow-hidden hover-lift relative ${container.isNew ? 'card-highlight' : 'card-steel'} ${grid.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 style={{ transitionDelay: grid.isVisible ? `${index * 60}ms` : '0ms', transition: 'opacity 0.5s, transform 0.5s' }}
               >
+                {container.isNew && (
+                  <div className="absolute top-3 right-3 z-10">
+                    <span className="badge-new flex items-center gap-1">
+                      <Sparkles className="h-3 w-3" />
+                      Novo
+                    </span>
+                  </div>
+                )}
                 <div className="relative h-56 bg-steel-50 overflow-hidden">
                   <img
                     src={container.imagePath}
@@ -105,8 +113,9 @@ const ContainersPage: React.FC<ContainersPageProps> = ({ onPageChange }) => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     onError={(e) => { e.currentTarget.src = container.fallbackImage; }}
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-steel-900/40 to-transparent" />
                   <div className="absolute top-3 left-3 flex gap-2">
-                    <span className="glass text-steel-700 text-xs font-semibold px-3 py-1 rounded-full">
+                    <span className={`text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm ${container.availability === 'Na zalogi' ? 'bg-emerald-500/90 text-white' : 'bg-amber-500/90 text-white'}`}>
                       {container.availability}
                     </span>
                     <span className="bg-steel-900/80 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
@@ -115,7 +124,7 @@ const ContainersPage: React.FC<ContainersPageProps> = ({ onPageChange }) => {
                   </div>
                 </div>
                 <div className="p-5">
-                  <h3 className="text-lg font-bold text-steel-900 mb-1">{container.name}</h3>
+                  <h3 className="text-lg font-bold text-steel-900 mb-1 group-hover:text-blue-700 transition-colors">{container.name}</h3>
                   <p className="text-sm text-steel-500 mb-3">{container.dimensions}</p>
                   <div className="flex gap-3 mb-4">
                     <div className="bg-steel-50 px-3 py-1.5 rounded-lg text-center flex-1">
@@ -129,7 +138,7 @@ const ContainersPage: React.FC<ContainersPageProps> = ({ onPageChange }) => {
                   </div>
                   <div className="flex items-center justify-between pt-4 border-t border-steel-100">
                     <div>
-                      <div className="text-2xl font-bold text-steel-900">{container.price} &euro;</div>
+                      <div className={`text-2xl font-bold ${container.isNew ? 'text-amber-600' : 'text-steel-900'}`}>{container.price} &euro;</div>
                       <div className="text-xs text-steel-400">+ DDV</div>
                     </div>
                     <button

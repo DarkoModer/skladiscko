@@ -1,5 +1,5 @@
 import { useInView } from '../hooks/useInView';
-import { CheckCircle, MapPin, Warehouse, Home, Container, Shield, Package, Truck, Anchor, CarFront, ArrowRight } from 'lucide-react';
+import { CheckCircle, MapPin, Warehouse, Home, Container, Shield, Package, Truck, Anchor, CarFront, ArrowRight, Sparkles } from 'lucide-react';
 import sotor from '../Photos/skladiscni_sotor.webp';
 import hala from '../Photos/montazna_hala.jpg';
 import storage from '../Photos/storage1.png';
@@ -42,9 +42,9 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                   <div className="absolute -top-20 -left-20 w-40 h-40 bg-accent-400/5 rounded-full blur-2xl" />
                 </div>
                 <div className="relative">
-                  <span className="inline-flex items-center gap-2 bg-accent-500/15 text-accent-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4 border border-accent-400/20">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent-400 animate-pulse" />
-                    Novo
+                  <span className="badge-new-dark mb-4">
+                    <Sparkles className="h-3 w-3" />
+                    Novo v ponudbi
                   </span>
                   <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
                     Najem kontejnerja 20' in 40'
@@ -73,12 +73,12 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                       { period: '37 - 48 mes.', price: '70' },
                       { period: '49 - 60 mes.', price: '65', best: true },
                     ].map((row, i) => (
-                      <div key={i} className={`flex justify-between py-2 px-3 rounded-lg text-sm ${row.best ? 'bg-blue-500/15' : ''}`}>
+                      <div key={i} className={`flex justify-between py-2 px-3 rounded-lg text-sm ${row.best ? 'bg-amber-500/10 border-l-2 border-amber-400' : ''}`}>
                         <div className="flex items-center gap-2">
-                          {row.best && <span className="bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs font-bold px-2 py-0.5 rounded-full">Top</span>}
+                          {row.best && <span className="bg-gradient-to-r from-amber-500 to-amber-400 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-sm shadow-amber-500/30">Top</span>}
                           <span className="text-steel-300">{row.period}</span>
                         </div>
-                        <span className={`font-bold ${row.best ? 'text-blue-200' : 'text-white'}`}>{row.price} &euro; <span className="text-steel-500 font-normal">+ DDV</span></span>
+                        <span className={`font-bold ${row.best ? 'text-amber-300' : 'text-white'}`}>{row.price} &euro; <span className="text-steel-500 font-normal">+ DDV</span></span>
                       </div>
                     ))}
                   </div>
@@ -123,8 +123,8 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-steel-50 p-2 rounded-xl">
-                    <Warehouse className="h-5 w-5 text-steel-700" />
+                  <div className="bg-blue-50 p-2 rounded-xl">
+                    <Warehouse className="h-5 w-5 text-blue-700" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-steel-900">Skladiščna hala</h3>
@@ -139,7 +139,7 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                     { icon: <Shield className="h-4 w-4" />, text: '24/7 dostop' },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-2 text-sm text-steel-600">
-                      <span className="text-accent-500">{item.icon}</span>
+                      <span className="text-blue-500">{item.icon}</span>
                       {item.text}
                     </div>
                   ))}
@@ -162,8 +162,8 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-accent-500/10 p-2 rounded-xl">
-                    <Home className="h-5 w-5 text-accent-600" />
+                  <div className="bg-sky-50 p-2 rounded-xl">
+                    <Home className="h-5 w-5 text-sky-600" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-steel-900">Skladiščni šotor</h3>
@@ -178,7 +178,7 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                     { icon: <Shield className="h-4 w-4" />, text: 'Vremenska zaščita' },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-2 text-sm text-steel-600">
-                      <span className="text-accent-500">{item.icon}</span>
+                      <span className="text-blue-500">{item.icon}</span>
                       {item.text}
                     </div>
                   ))}
@@ -200,23 +200,28 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
 
       <section className="py-16 bg-white">
         <div ref={location.ref} className="max-w-5xl mx-auto px-5 sm:px-8">
-          <div className={`bg-steel-50 rounded-2xl p-8 md:p-10 text-center transition-all duration-700 ${location.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="flex items-center justify-center gap-2 mb-3">
-              <MapPin className="h-5 w-5 text-accent-500" />
-              <h3 className="text-xl font-bold text-steel-900">Lokacija v Ptuju</h3>
+          <div className={`section-dark rounded-2xl p-8 md:p-10 text-center transition-all duration-700 ${location.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} relative overflow-hidden`}>
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute -top-20 -right-20 w-48 h-48 bg-white/[0.03] rounded-full blur-2xl" />
             </div>
-            <p className="text-steel-500 mb-8 max-w-lg mx-auto">Strateško odlična lokacija z enostavnim dostopom do avtoceste.</p>
-            <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
-              {[
-                { value: '2 km', label: 'od A4' },
-                { value: '24/7', label: 'dostop' },
-                { value: '500+', label: 'palet' },
-              ].map((stat, i) => (
-                <div key={i} className="text-center">
-                  <div className="text-2xl font-bold text-steel-800">{stat.value}</div>
-                  <div className="text-xs text-steel-500">{stat.label}</div>
-                </div>
-              ))}
+            <div className="relative">
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <MapPin className="h-5 w-5 text-amber-400" />
+                <h3 className="text-xl font-bold text-white">Lokacija v Ptuju</h3>
+              </div>
+              <p className="text-steel-400 mb-8 max-w-lg mx-auto">Strateško odlična lokacija z enostavnim dostopom do avtoceste.</p>
+              <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
+                {[
+                  { value: '2 km', label: 'od A4' },
+                  { value: '24/7', label: 'dostop' },
+                  { value: '500+', label: 'palet' },
+                ].map((stat, i) => (
+                  <div key={i} className="text-center">
+                    <div className="text-3xl font-bold text-white">{stat.value}</div>
+                    <div className="text-xs text-steel-400 mt-1">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -63,7 +63,7 @@ const ConstructionPage: React.FC<ConstructionPageProps> = ({ onPageChange }) => 
                 <div className="grid grid-cols-2 gap-2">
                   {service.features.map((f, j) => (
                     <div key={j} className="flex items-center gap-2 text-sm text-steel-600">
-                      <CheckCircle className="h-4 w-4 text-accent-500 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-blue-500 flex-shrink-0" />
                       {f}
                     </div>
                   ))}
@@ -88,7 +88,9 @@ const ConstructionPage: React.FC<ConstructionPageProps> = ({ onPageChange }) => 
                 className={`relative bg-white p-6 rounded-2xl border border-steel-100 hover-lift ${stepsSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 style={{ transitionDelay: stepsSection.isVisible ? `${i * 120}ms` : '0ms', transition: 'opacity 0.5s, transform 0.5s' }}
               >
-                <div className="text-4xl font-extrabold text-steel-100 mb-3">{step.num}</div>
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-blue-50 mb-4">
+                  <span className="text-xl font-extrabold text-blue-700">{step.num}</span>
+                </div>
                 <h3 className="text-lg font-bold text-steel-900 mb-2">{step.title}</h3>
                 <p className="text-sm text-steel-500 leading-relaxed">{step.desc}</p>
               </div>
@@ -105,11 +107,11 @@ const ConstructionPage: React.FC<ConstructionPageProps> = ({ onPageChange }) => 
               <div className="space-y-6">
                 {[
                   { icon: <Shield className="h-5 w-5" />, title: 'Celovita izvedba', desc: 'Vi imate zemljišče, mi poskrbimo za vse ostalo.' },
-                  { icon: <Shovel className="h-5 w-5" />, title: 'Strokovna ekipa', desc: 'Izkušeni strokovnjaki za vse vidike gradnje.' },
-                  { icon: <Layers className="h-5 w-5" />, title: 'Transparentnost', desc: 'Jasna komunikacija, realne ponudbe, brez presenečenj.' },
+                  { icon: <Shovel className="h-5 w-5" />, title: 'Strokovna ekipa', desc: 'Izkušeni strokovnjaki za vse vidike gradnje.', bg: 'bg-amber-50 text-amber-600' },
+                  { icon: <Layers className="h-5 w-5" />, title: 'Transparentnost', desc: 'Jasna komunikacija, realne ponudbe, brez presenečenj.', bg: 'bg-sky-50 text-sky-600' },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4">
-                    <div className="bg-steel-50 p-2.5 rounded-xl text-steel-700 h-fit">{item.icon}</div>
+                    <div className={`${(item as { bg?: string }).bg ?? 'bg-blue-50 text-blue-600'} p-2.5 rounded-xl h-fit`}>{item.icon}</div>
                     <div>
                       <h3 className="font-semibold text-steel-900 mb-1">{item.title}</h3>
                       <p className="text-sm text-steel-500">{item.desc}</p>

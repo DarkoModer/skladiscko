@@ -1,6 +1,6 @@
 import Hero from '../components/Hero';
 import { useInView } from '../hooks/useInView';
-import { Container, Building, Hammer, ArrowRight, Shield, Truck, Clock, MapPin, Lock } from 'lucide-react';
+import { Container, Building, Hammer, ArrowRight, Shield, Truck, Clock, MapPin, Lock, Sparkles } from 'lucide-react';
 import luka1 from '../Photos/luka1.jpg';
 import gradnja from '../Photos/gradnja.jpg';
 
@@ -20,7 +20,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
       <section className="py-24 bg-white">
         <div ref={services.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`text-center mb-16 transition-all duration-700 ${services.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="text-accent-500 text-sm font-semibold tracking-widest uppercase mb-3">Naše storitve</p>
+            <p className="text-blue-600 text-sm font-semibold tracking-widest uppercase mb-3">Naše storitve</p>
             <h2 className="text-3xl md:text-4xl font-bold text-steel-900">
               Vse na enem mestu
             </h2>
@@ -35,7 +35,9 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                 img: luka1,
                 fallback: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800',
                 page: 'containers',
-                iconBg: 'bg-steel-50 text-steel-700',
+                iconBg: 'bg-blue-50 text-blue-700',
+                accentBar: 'from-blue-600 to-blue-400',
+                isNew: false,
               },
               {
                 icon: <Building className="h-6 w-6" />,
@@ -44,7 +46,9 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                 img: 'https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=800',
                 fallback: 'https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=800',
                 page: 'storage',
-                iconBg: 'bg-accent-500/10 text-accent-600',
+                iconBg: 'bg-sky-50 text-sky-700',
+                accentBar: 'from-sky-500 to-sky-300',
+                isNew: true,
               },
               {
                 icon: <Hammer className="h-6 w-6" />,
@@ -54,6 +58,8 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                 fallback: 'https://images.pexels.com/photos/1248516/pexels-photo-1248516.jpeg?auto=compress&cs=tinysrgb&w=800',
                 page: 'construction',
                 iconBg: 'bg-amber-50 text-amber-600',
+                accentBar: 'from-amber-500 to-amber-300',
+                isNew: false,
               },
             ].map((service, i) => (
               <div
@@ -62,6 +68,14 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                 style={{ transitionDelay: services.isVisible ? `${(i + 1) * 150}ms` : '0ms', transition: 'opacity 0.7s, transform 0.7s' }}
                 onClick={() => onPageChange(service.page)}
               >
+                {service.isNew && (
+                  <div className="absolute top-3 right-3 z-10">
+                    <span className="badge-new flex items-center gap-1">
+                      <Sparkles className="h-3 w-3" />
+                      Novo
+                    </span>
+                  </div>
+                )}
                 <div className="relative h-52 overflow-hidden">
                   <img
                     src={service.img}
@@ -69,13 +83,14 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     onError={(e) => { e.currentTarget.src = service.fallback; }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-steel-900/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-steel-900/60 to-transparent" />
+                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.accentBar} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                 </div>
                 <div className="p-6">
                   <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl mb-4 ${service.iconBg}`}>
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-steel-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-steel-900 mb-2 group-hover:text-blue-700 transition-colors duration-300">
                     {service.title}
                   </h3>
                   <p className="text-steel-500 leading-relaxed mb-4">{service.desc}</p>
@@ -92,14 +107,15 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
 
       <section className="py-24 section-dark relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-accent-400/3 rounded-full blur-3xl animate-glow" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-steel-500/3 rounded-full blur-3xl animate-glow animate-delay-300" />
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-white/[0.03] rounded-full blur-3xl animate-glow" />
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-white/[0.02] rounded-full blur-3xl animate-glow animate-delay-300" />
+          <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
         </div>
 
         <div ref={rental.ref} className="relative max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`text-center mb-14 transition-all duration-700 ${rental.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <span className="inline-flex items-center gap-2 bg-accent-500/15 text-accent-300 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4 border border-accent-400/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-400 animate-pulse" />
+            <span className="badge-new-dark inline-flex items-center gap-2 mb-5">
+              <Sparkles className="h-3.5 w-3.5" />
               Novo v ponudbi
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
@@ -117,19 +133,20 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                 { icon: <Lock className="h-4 w-4" />, text: 'Vaš ključ' },
                 { icon: <Shield className="h-4 w-4" />, text: 'Varovan prostor' },
                 { icon: <MapPin className="h-4 w-4" />, text: 'Ptuj in Maribor' },
-                { icon: <Container className="h-4 w-4" />, text: '20\' (~14 m\u00B2)' },
-                { icon: <Truck className="h-4 w-4" />, text: '40\' (~28 m\u00B2)' },
+                { icon: <Container className="h-4 w-4" />, text: "20' (~14 m²)" },
+                { icon: <Truck className="h-4 w-4" />, text: "40' (~28 m²)" },
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 bg-white/[0.04] rounded-xl p-4 border border-white/[0.06] hover:bg-white/[0.07] transition-colors duration-300">
-                  <span className="text-accent-400">{item.icon}</span>
-                  <span className="text-sm text-steel-300">{item.text}</span>
+                <div key={i} className="flex items-center gap-3 bg-white/[0.06] rounded-xl p-4 border border-white/[0.09] hover:bg-white/[0.10] transition-colors duration-300">
+                  <span className="text-amber-400">{item.icon}</span>
+                  <span className="text-sm text-steel-200">{item.text}</span>
                 </div>
               ))}
             </div>
 
-            <div className="bg-white/[0.04] rounded-2xl border border-white/[0.08] overflow-hidden">
-              <div className="px-6 py-4 border-b border-white/[0.08]">
-                <h4 className="text-white font-semibold">Cenik najema <span className="text-steel-400 font-normal text-sm">/ kos / mesec + DDV</span></h4>
+            <div className="bg-white/[0.05] rounded-2xl border border-white/[0.10] overflow-hidden">
+              <div className="px-6 py-4 border-b border-white/[0.08] flex items-center justify-between">
+                <h4 className="text-white font-semibold">Cenik najema</h4>
+                <span className="text-steel-400 text-sm">kos / mesec + DDV</span>
               </div>
               <div className="divide-y divide-white/[0.05]">
                 {[
@@ -139,13 +156,13 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                   { period: '37 - 48 mesecev', price: '70' },
                   { period: '49 - 60 mesecev', price: '65', best: true },
                 ].map((row, i) => (
-                  <div key={i} className={`flex items-center justify-between px-6 py-3.5 ${row.best ? 'bg-blue-500/15' : 'hover:bg-white/[0.03]'} transition-colors duration-300`}>
+                  <div key={i} className={`flex items-center justify-between px-6 py-3.5 ${row.best ? 'bg-amber-500/10 border-l-2 border-amber-400' : 'hover:bg-white/[0.03]'} transition-colors duration-300`}>
                     <div className="flex items-center gap-3">
-                      {row.best && <span className="bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs font-bold px-2.5 py-0.5 rounded-full">Najboljša</span>}
+                      {row.best && <span className="bg-gradient-to-r from-amber-500 to-amber-400 text-white text-xs font-bold px-2.5 py-0.5 rounded-full shadow-sm shadow-amber-500/30">Najboljša</span>}
                       <span className="text-steel-300 text-sm">{row.period}</span>
                     </div>
                     <div>
-                      <span className={`font-bold text-lg ${row.best ? 'text-blue-200' : 'text-white'}`}>{row.price} &euro;</span>
+                      <span className={`font-bold text-lg ${row.best ? 'text-amber-300' : 'text-white'}`}>{row.price} €</span>
                       <span className="text-steel-500 text-sm ml-1">+ DDV</span>
                     </div>
                   </div>
@@ -174,12 +191,12 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                   Pripravite se na novi projekt?
                 </h2>
-                <p className="text-steel-400 mb-8 leading-relaxed">
+                <p className="text-steel-300 mb-8 leading-relaxed">
                   Brezplačna svetovanja, hitri odzivni časi in konkurenčne cene.
                 </p>
                 <button
                   onClick={() => onPageChange('contact')}
-                  className="group bg-white text-steel-900 px-7 py-3.5 rounded-full font-semibold hover:bg-steel-50 transition-all duration-300 inline-flex items-center gap-2"
+                  className="group bg-white text-steel-900 px-7 py-3.5 rounded-full font-semibold hover:bg-amber-50 transition-all duration-300 inline-flex items-center gap-2 shadow-lg"
                 >
                   Brezplačna ponudba
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
