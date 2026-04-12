@@ -28,17 +28,17 @@ const ConstructionPage: React.FC<ConstructionPageProps> = ({ onPageChange }) => 
 
   return (
     <div>
-      <section className="relative bg-slate-950 pt-32 pb-20 overflow-hidden">
+      <section className="relative section-dark pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-3xl" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent-400/3 rounded-full blur-3xl animate-glow" />
         </div>
         <div ref={hero.ref} className="relative max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`max-w-2xl transition-all duration-700 ${hero.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4">Izgradnja</p>
+            <p className="text-accent-400 text-sm font-semibold tracking-widest uppercase mb-4">Izgradnja</p>
             <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
               Izgradnja Self-Storage
             </h1>
-            <p className="text-slate-400 text-lg leading-relaxed max-w-lg">
+            <p className="text-steel-400 text-lg leading-relaxed max-w-lg">
               Imate zemljisce? Zgradimo celoten skladiscni objekt. Od priprave terena do kljuca v roke.
             </p>
           </div>
@@ -48,22 +48,22 @@ const ConstructionPage: React.FC<ConstructionPageProps> = ({ onPageChange }) => 
       <section className="py-20 bg-white">
         <div ref={servicesSection.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`text-center mb-14 transition-all duration-700 ${servicesSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">Kaj vkljucuje storitev</h2>
-            <p className="text-gray-500">Celovita izvedba od zacetka do konca</p>
+            <h2 className="text-3xl font-bold text-steel-900 mb-3">Kaj vkljucuje storitev</h2>
+            <p className="text-steel-500">Celovita izvedba od zacetka do konca</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {services.map((service, i) => (
               <div
                 key={i}
-                className={`bg-white p-7 rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-500 ${servicesSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                style={{ transitionDelay: servicesSection.isVisible ? `${i * 100}ms` : '0ms' }}
+                className={`card-steel p-7 hover-lift ${servicesSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: servicesSection.isVisible ? `${i * 100}ms` : '0ms', transition: 'opacity 0.5s, transform 0.5s' }}
               >
-                <h3 className="text-lg font-bold text-gray-900 mb-4">{service.title}</h3>
+                <h3 className="text-lg font-bold text-steel-900 mb-4">{service.title}</h3>
                 <div className="grid grid-cols-2 gap-2">
                   {service.features.map((f, j) => (
-                    <div key={j} className="flex items-center gap-2 text-sm text-gray-600">
-                      <CheckCircle className="h-4 w-4 text-emerald-500 flex-shrink-0" />
+                    <div key={j} className="flex items-center gap-2 text-sm text-steel-600">
+                      <CheckCircle className="h-4 w-4 text-accent-500 flex-shrink-0" />
                       {f}
                     </div>
                   ))}
@@ -74,23 +74,23 @@ const ConstructionPage: React.FC<ConstructionPageProps> = ({ onPageChange }) => 
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-steel-50">
         <div ref={stepsSection.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`text-center mb-14 transition-all duration-700 ${stepsSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">Kako poteka projekt</h2>
-            <p className="text-gray-500">Stiri koraki do vasega skladisca</p>
+            <h2 className="text-3xl font-bold text-steel-900 mb-3">Kako poteka projekt</h2>
+            <p className="text-steel-500">Stiri koraki do vasega skladisca</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((step, i) => (
               <div
                 key={i}
-                className={`relative bg-white p-6 rounded-2xl border border-gray-100 transition-all duration-500 hover:shadow-lg ${stepsSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                style={{ transitionDelay: stepsSection.isVisible ? `${i * 120}ms` : '0ms' }}
+                className={`relative bg-white p-6 rounded-2xl border border-steel-100 hover-lift ${stepsSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: stepsSection.isVisible ? `${i * 120}ms` : '0ms', transition: 'opacity 0.5s, transform 0.5s' }}
               >
-                <div className="text-4xl font-extrabold text-blue-100 mb-3">{step.num}</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
+                <div className="text-4xl font-extrabold text-steel-100 mb-3">{step.num}</div>
+                <h3 className="text-lg font-bold text-steel-900 mb-2">{step.title}</h3>
+                <p className="text-sm text-steel-500 leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -101,7 +101,7 @@ const ConstructionPage: React.FC<ConstructionPageProps> = ({ onPageChange }) => 
         <div ref={benefits.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center transition-all duration-700 ${benefits.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Zakaj izbrati nas?</h2>
+              <h2 className="text-3xl font-bold text-steel-900 mb-8">Zakaj izbrati nas?</h2>
               <div className="space-y-6">
                 {[
                   { icon: <Shield className="h-5 w-5" />, title: 'Celovita izvedba', desc: 'Vi imate zemljisce, mi poskrbimo za vse ostalo.' },
@@ -109,20 +109,20 @@ const ConstructionPage: React.FC<ConstructionPageProps> = ({ onPageChange }) => 
                   { icon: <Layers className="h-5 w-5" />, title: 'Transparentnost', desc: 'Jasna komunikacija, realne ponudbe, brez presenecenj.' },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4">
-                    <div className="bg-blue-50 p-2.5 rounded-xl text-blue-600 h-fit">{item.icon}</div>
+                    <div className="bg-steel-50 p-2.5 rounded-xl text-steel-700 h-fit">{item.icon}</div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>
-                      <p className="text-sm text-gray-500">{item.desc}</p>
+                      <h3 className="font-semibold text-steel-900 mb-1">{item.title}</h3>
+                      <p className="text-sm text-steel-500">{item.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="relative rounded-2xl overflow-hidden">
+            <div className="relative rounded-2xl overflow-hidden group">
               <img
                 src={betoniranje}
                 alt="Izgradnja skladisca"
-                className="w-full h-80 object-cover rounded-2xl"
+                className="w-full h-80 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700 ease-out"
                 onError={(e) => {
                   e.currentTarget.src = 'https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=1200';
                 }}
@@ -132,19 +132,22 @@ const ConstructionPage: React.FC<ConstructionPageProps> = ({ onPageChange }) => 
         </div>
       </section>
 
-      <section className="py-20 bg-slate-950">
-        <div className="max-w-3xl mx-auto text-center px-5 sm:px-8">
+      <section className="py-20 section-dark relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-accent-400/3 rounded-full blur-3xl" />
+        </div>
+        <div className="relative max-w-3xl mx-auto text-center px-5 sm:px-8">
           <h2 className="text-3xl font-bold text-white mb-4">Imate zemljisce in potrebujete skladisce?</h2>
-          <p className="text-slate-400 mb-8">Brezplacen ogled in ponudba za vas projekt</p>
+          <p className="text-steel-400 mb-8">Brezplacen ogled in ponudba za vas projekt</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <button
               onClick={() => onPageChange?.('contact')}
-              className="group bg-blue-600 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-blue-500 transition-colors inline-flex items-center justify-center gap-2"
+              className="btn-accent group"
             >
               Pridobite ponudbo
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            <a href="tel:069633480" className="border border-white/20 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-white/5 transition-colors">
+            <a href="tel:069633480" className="border border-white/15 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-white/5 transition-all duration-300">
               069 633 480
             </a>
           </div>

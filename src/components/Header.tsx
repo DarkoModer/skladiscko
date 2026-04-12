@@ -26,11 +26,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => {
   }, []);
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [isMenuOpen]);
 
@@ -38,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-white/90 backdrop-blur-xl shadow-sm'
+          ? 'glass shadow-sm'
           : 'bg-transparent'
       }`}
     >
@@ -49,12 +45,14 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => {
             className="flex items-center gap-2.5 group"
           >
             <div className={`p-1.5 rounded-lg transition-all duration-300 ${
-              scrolled ? 'bg-blue-600' : 'bg-white/15 backdrop-blur-sm'
+              scrolled
+                ? 'bg-gradient-to-br from-steel-700 to-steel-800'
+                : 'bg-white/15 backdrop-blur-sm'
             }`}>
               <Container className="h-5 w-5 text-white" />
             </div>
             <span className={`text-lg font-bold tracking-tight transition-colors duration-300 ${
-              scrolled ? 'text-gray-900' : 'text-white'
+              scrolled ? 'text-steel-900' : 'text-white'
             }`}>
               Skladiscko
             </span>
@@ -65,14 +63,14 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => {
               <button
                 key={item.id}
                 onClick={() => onPageChange(item.id)}
-                className={`relative px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-full ${
+                className={`relative px-3.5 py-2 text-sm font-medium transition-all duration-300 rounded-full ${
                   currentPage === item.id
                     ? scrolled
-                      ? 'text-blue-600 bg-blue-50'
+                      ? 'text-steel-800 bg-steel-100'
                       : 'text-white bg-white/20'
                     : scrolled
-                      ? 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                      : 'text-white/80 hover:text-white hover:bg-white/10'
+                      ? 'text-steel-500 hover:text-steel-800 hover:bg-steel-50'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
                 }`}
               >
                 {item.name}
@@ -83,7 +81,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => {
           <button
             className={`md:hidden p-2 rounded-lg transition-all duration-300 ${
               scrolled
-                ? 'text-gray-700 hover:bg-gray-100'
+                ? 'text-steel-700 hover:bg-steel-100'
                 : 'text-white hover:bg-white/10'
             }`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -94,13 +92,14 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => {
       </div>
 
       <div
-        className={`md:hidden fixed inset-0 top-16 bg-white/95 backdrop-blur-2xl transition-all duration-300 ${
+        className={`md:hidden fixed inset-0 top-16 transition-all duration-400 ${
           isMenuOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
         }`}
       >
-        <nav className="flex flex-col px-6 pt-8 gap-1">
+        <div className="absolute inset-0 bg-steel-950/60 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
+        <nav className="relative bg-white mx-4 mt-2 rounded-2xl shadow-xl shadow-steel-900/10 p-3 border border-steel-100">
           {navigation.map((item, index) => (
             <button
               key={item.id}
@@ -108,12 +107,12 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => {
                 onPageChange(item.id);
                 setIsMenuOpen(false);
               }}
-              className={`text-left px-4 py-3.5 text-lg font-medium rounded-xl transition-all duration-300 ${
+              className={`w-full text-left px-4 py-3 text-base font-medium rounded-xl transition-all duration-300 ${
                 isMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
               } ${
                 currentPage === item.id
-                  ? 'text-blue-600 bg-blue-50'
-                  : 'text-gray-700 hover:bg-gray-50'
+                  ? 'text-steel-800 bg-steel-50'
+                  : 'text-steel-600 hover:bg-steel-50'
               }`}
               style={{ transitionDelay: isMenuOpen ? `${index * 50}ms` : '0ms' }}
             >

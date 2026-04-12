@@ -14,29 +14,30 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
   ];
 
   return (
-    <footer className="bg-slate-950 text-white">
+    <footer className="section-dark text-white">
+      <div className="divider-glow" />
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2.5 mb-5">
-              <div className="bg-blue-600 p-1.5 rounded-lg">
+              <div className="bg-gradient-to-br from-steel-600 to-steel-700 p-1.5 rounded-lg">
                 <Container className="h-5 w-5 text-white" />
               </div>
               <span className="text-lg font-bold tracking-tight">Skladiscko</span>
             </div>
-            <p className="text-slate-400 leading-relaxed max-w-sm mb-6">
+            <p className="text-steel-400 leading-relaxed max-w-sm mb-6">
               Zaupanja vreden ponudnik skladiscnih resitev z vec kot 6 leti izkusenj.
             </p>
             <div className="flex flex-col gap-3">
-              <a href="tel:069633480" className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors">
+              <a href="tel:069633480" className="flex items-center gap-3 text-steel-400 hover:text-accent-300 transition-colors duration-300">
                 <Phone className="h-4 w-4" />
                 <span>069 633 480</span>
               </a>
-              <a href="mailto:info@skladiscko.si" className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors">
+              <a href="mailto:info@skladiscko.si" className="flex items-center gap-3 text-steel-400 hover:text-accent-300 transition-colors duration-300">
                 <Mail className="h-4 w-4" />
                 <span>info@skladiscko.si</span>
               </a>
-              <div className="flex items-center gap-3 text-slate-400">
+              <div className="flex items-center gap-3 text-steel-400">
                 <MapPin className="h-4 w-4 flex-shrink-0" />
                 <span>Puhova ulica 12a, 2250 Ptuj</span>
               </div>
@@ -44,15 +45,15 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-5">Storitve</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-steel-300 mb-5">Storitve</h4>
             <ul className="space-y-3">
               {links.map((link) => (
                 <li key={link.id}>
                   <button
                     onClick={() => onPageChange(link.id)}
-                    className="text-slate-400 hover:text-white transition-colors flex items-center gap-2 group"
+                    className="text-steel-400 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
                   >
-                    <ArrowRight className="h-3 w-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200" />
+                    <ArrowRight className="h-3 w-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
                     {link.name}
                   </button>
                 </li>
@@ -61,24 +62,27 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-5">Sledite nam</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-steel-300 mb-5">Sledite nam</h4>
             <a
               href="https://www.facebook.com/profile.php?id=61577763940228"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-slate-400 hover:text-white transition-colors"
+              className="inline-flex items-center gap-3 text-steel-400 hover:text-accent-300 transition-colors duration-300 group"
             >
-              <Facebook className="h-5 w-5" />
+              <div className="p-2 rounded-lg bg-steel-800/50 group-hover:bg-steel-700/50 transition-colors duration-300">
+                <Facebook className="h-4 w-4" />
+              </div>
               <span>Facebook</span>
             </a>
             <div className="mt-8">
-              <p className="text-sm text-slate-500">Na voljo 24/7</p>
+              <p className="text-sm text-steel-500">Na voljo 24/7</p>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-slate-800/60 py-6 text-center">
-          <p className="text-sm text-slate-500">
+        <div className="divider-glow" />
+        <div className="py-6 text-center">
+          <p className="text-sm text-steel-500">
             &copy; 2026 Skladiscko. Vse pravice pridrzane.
           </p>
         </div>

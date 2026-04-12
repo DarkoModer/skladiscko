@@ -50,17 +50,17 @@ const ContactPage: React.FC = () => {
 
   return (
     <div>
-      <section className="relative bg-slate-950 pt-32 pb-20 overflow-hidden">
+      <section className="relative section-dark pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-3xl" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent-400/3 rounded-full blur-3xl animate-glow" />
         </div>
         <div ref={hero.ref} className="relative max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`max-w-2xl transition-all duration-700 ${hero.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4">Kontakt</p>
+            <p className="text-accent-400 text-sm font-semibold tracking-widest uppercase mb-4">Kontakt</p>
             <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
               Stopite v stik
             </h1>
-            <p className="text-slate-400 text-lg leading-relaxed max-w-lg">
+            <p className="text-steel-400 text-lg leading-relaxed max-w-lg">
               Nasa ekipa je pripravljena vam pomagati. Brezplacno svetovanje in konkurencna ponudba.
             </p>
           </div>
@@ -71,7 +71,7 @@ const ContactPage: React.FC = () => {
         <div ref={form.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`grid grid-cols-1 lg:grid-cols-5 gap-10 transition-all duration-700 ${form.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="lg:col-span-2 space-y-6">
-              <h2 className="text-2xl font-bold text-gray-900">Kontaktni podatki</h2>
+              <h2 className="text-2xl font-bold text-steel-900">Kontaktni podatki</h2>
 
               <div className="space-y-5">
                 {[
@@ -80,36 +80,41 @@ const ContactPage: React.FC = () => {
                   { icon: <MapPin className="h-5 w-5" />, label: 'Naslov', value: 'Puhova ulica 12a', sub: '2250 Ptuj' },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4">
-                    <div className="bg-gray-50 p-2.5 rounded-xl text-gray-600 h-fit">
+                    <div className="bg-steel-50 p-2.5 rounded-xl text-steel-600 h-fit">
                       {item.icon}
                     </div>
                     <div>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">{item.label}</p>
+                      <p className="text-xs text-steel-400 uppercase tracking-wider font-medium">{item.label}</p>
                       {item.href ? (
-                        <a href={item.href} className="font-semibold text-gray-900 hover:text-blue-600 transition-colors">{item.value}</a>
+                        <a href={item.href} className="font-semibold text-steel-900 hover:text-accent-500 transition-colors">{item.value}</a>
                       ) : (
-                        <p className="font-semibold text-gray-900">{item.value}</p>
+                        <p className="font-semibold text-steel-900">{item.value}</p>
                       )}
-                      <p className="text-sm text-gray-500">{item.sub}</p>
+                      <p className="text-sm text-steel-500">{item.sub}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="bg-slate-950 p-6 rounded-2xl text-white">
-                <h3 className="font-semibold mb-3">Obmocja storitev</h3>
-                <div className="grid grid-cols-2 gap-2 text-sm text-slate-300">
-                  <span>Ptuj in okolica</span>
-                  <span>Maribor</span>
-                  <span>Ljubljana</span>
-                  <span>Celje</span>
+              <div className="section-dark p-6 rounded-2xl text-white relative overflow-hidden">
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute -top-20 -right-20 w-40 h-40 bg-accent-400/5 rounded-full blur-2xl" />
+                </div>
+                <div className="relative">
+                  <h3 className="font-semibold mb-3">Obmocja storitev</h3>
+                  <div className="grid grid-cols-2 gap-2 text-sm text-steel-300">
+                    <span>Ptuj in okolica</span>
+                    <span>Maribor</span>
+                    <span>Ljubljana</span>
+                    <span>Celje</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div className="lg:col-span-3">
-              <div className="bg-gray-50 p-6 md:p-8 rounded-2xl">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Posljite sporocilo</h2>
+              <div className="bg-steel-50 p-6 md:p-8 rounded-2xl">
+                <h2 className="text-2xl font-bold text-steel-900 mb-6">Posljite sporocilo</h2>
 
                 {submitStatus === 'success' && (
                   <div className="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
@@ -126,30 +131,30 @@ const ContactPage: React.FC = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">Ime *</label>
+                      <label htmlFor="name" className="block text-sm font-medium text-steel-700 mb-1.5">Ime *</label>
                       <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none"
+                        className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all outline-none"
                         placeholder="Vase ime" />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">E-posta *</label>
+                      <label htmlFor="email" className="block text-sm font-medium text-steel-700 mb-1.5">E-posta *</label>
                       <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none"
+                        className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all outline-none"
                         placeholder="vas@email.si" />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1.5">Telefon</label>
+                      <label htmlFor="phone" className="block text-sm font-medium text-steel-700 mb-1.5">Telefon</label>
                       <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none"
+                        className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all outline-none"
                         placeholder="069 123 456" />
                     </div>
                     <div>
-                      <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1.5">Storitev</label>
+                      <label htmlFor="service" className="block text-sm font-medium text-steel-700 mb-1.5">Storitev</label>
                       <select id="service" name="service" value={formData.service} onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none">
+                        className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all outline-none">
                         <option value="">Izberite storitev</option>
                         <option value="Kontejnerji - nakup">Kontejnerji - nakup</option>
                         <option value="Kontejnerji - najem">Kontejnerji - najem</option>
@@ -161,16 +166,16 @@ const ContactPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1.5">Sporocilo *</label>
+                    <label htmlFor="message" className="block text-sm font-medium text-steel-700 mb-1.5">Sporocilo *</label>
                     <textarea id="message" name="message" required rows={5} value={formData.message} onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none resize-none"
+                      className="w-full px-4 py-3 bg-white border border-steel-200 rounded-xl text-sm focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all outline-none resize-none"
                       placeholder="Povejte nam o vasih potrebah..." />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-slate-900 text-white py-3.5 rounded-full font-semibold hover:bg-slate-800 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full btn-primary justify-center disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send className="h-4 w-4" />
                     {isSubmitting ? 'Posiljam...' : 'Poslji sporocilo'}
@@ -182,28 +187,28 @@ const ContactPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-steel-50">
         <div ref={faqSection.ref} className="max-w-3xl mx-auto px-5 sm:px-8">
           <div className={`text-center mb-10 transition-all duration-700 ${faqSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">Pogosta vprasanja</h2>
+            <h2 className="text-3xl font-bold text-steel-900 mb-3">Pogosta vprasanja</h2>
           </div>
 
           <div className="space-y-3">
             {faqs.map((faq, i) => (
               <div
                 key={i}
-                className={`bg-white rounded-xl border border-gray-100 overflow-hidden transition-all duration-500 ${faqSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                className={`bg-white rounded-xl border border-steel-100 overflow-hidden hover:border-steel-200 transition-all duration-500 ${faqSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                 style={{ transitionDelay: faqSection.isVisible ? `${i * 80}ms` : '0ms' }}
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full flex items-center justify-between p-5 text-left"
                 >
-                  <span className="font-semibold text-gray-900 pr-4">{faq.q}</span>
-                  <ChevronDown className={`h-5 w-5 text-gray-400 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`} />
+                  <span className="font-semibold text-steel-900 pr-4">{faq.q}</span>
+                  <ChevronDown className={`h-5 w-5 text-steel-400 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`} />
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-40 pb-5' : 'max-h-0'}`}>
-                  <p className="px-5 text-sm text-gray-600 leading-relaxed">{faq.a}</p>
+                  <p className="px-5 text-sm text-steel-600 leading-relaxed">{faq.a}</p>
                 </div>
               </div>
             ))}
