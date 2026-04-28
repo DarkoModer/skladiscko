@@ -49,7 +49,7 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
                   <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
                     Najem kontejnerja 20' in 40'
                   </h2>
-                  <p className="text-steel-400 mb-6">Lokacije: Ptuj in Maribor</p>
+                  <p className="text-steel-400 mb-6">Na voljo na lokacijah Ptuj in Maribor ali z dostavo na vaš naslov.</p>
 
                   <div className="grid grid-cols-2 gap-3 mb-6">
                     {[
