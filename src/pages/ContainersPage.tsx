@@ -10,6 +10,8 @@ import moder40 from '../Photos/40moder.jpg';
 import pisarniski3 from '../Photos/pisarniski3mantracit.jpg';
 import pisarniski4 from '../Photos/pisarniski6m.jpg';
 import pisarniski6 from '../Photos/pisarniski6mbeli.jpg';
+import sidedoor40 from '../Photos/sidedoor40.webp';
+import hc20 from '../Photos/hc20.webp';
 
 interface ContainersPageProps {
   onPageChange?: (page: string) => void;
