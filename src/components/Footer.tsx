@@ -37,10 +37,15 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
                 <Mail className="h-4 w-4" />
                 <span>info@skladiscko.si</span>
               </a>
-              <div className="flex items-center gap-3 text-steel-400">
+              <a
+                href="https://www.google.com/maps/place/Skladi%C5%A1%C4%8Dko+-+Prodaja+in+najem+kontejnerjev/@46.4189285,15.8835886,17z/data=!3m1!4b1!4m6!3m5!1s0x476f67ac507d0dbf:0xe9b7b60c1447379e!8m2!3d46.4189248!4d15.8861635!16s%2Fg%2F11z6n5km42?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-steel-400 hover:text-accent-300 transition-colors duration-300"
+              >
                 <MapPin className="h-4 w-4 flex-shrink-0" />
                 <span>Puhova ulica 12a, 2250 Ptuj</span>
-              </div>
+              </a>
             </div>
           </div>
 
