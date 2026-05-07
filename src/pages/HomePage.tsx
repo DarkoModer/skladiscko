@@ -127,20 +127,27 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
           </div>
 
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-start transition-all duration-700 ${rental.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                { icon: <Clock className="h-4 w-4" />, text: 'Dostop 24/7' },
-                { icon: <Lock className="h-4 w-4" />, text: 'Vaš ključ' },
-                { icon: <Shield className="h-4 w-4" />, text: 'Varovan prostor' },
-                { icon: <MapPin className="h-4 w-4" />, text: 'Ptuj in Maribor' },
-                { icon: <Container className="h-4 w-4" />, text: "20' (~14 m²)" },
-                { icon: <Truck className="h-4 w-4" />, text: "40' (~28 m²)" },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 bg-white/[0.06] rounded-xl p-4 border border-white/[0.09] hover:bg-white/[0.10] transition-colors duration-300">
-                  <span className="text-amber-400">{item.icon}</span>
-                  <span className="text-sm text-steel-200">{item.text}</span>
-                </div>
-              ))}
+            <div className="flex flex-col gap-3">
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { icon: <Clock className="h-4 w-4" />, text: 'Dostop 24/7' },
+                  { icon: <Lock className="h-4 w-4" />, text: 'Vaš ključ' },
+                  { icon: <Shield className="h-4 w-4" />, text: 'Varovan prostor' },
+                  { icon: <MapPin className="h-4 w-4" />, text: 'Ptuj in Maribor' },
+                  { icon: <Container className="h-4 w-4" />, text: "20' (~14 m²)" },
+                  { icon: <Truck className="h-4 w-4" />, text: "40' (~28 m²)" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 bg-white/[0.06] rounded-xl p-4 border border-white/[0.09] hover:bg-white/[0.10] transition-colors duration-300">
+                    <span className="text-amber-400">{item.icon}</span>
+                    <span className="text-sm text-steel-200">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="bg-white/[0.05] rounded-2xl border border-white/[0.10] p-5">
+                <p className="text-steel-300 text-sm leading-relaxed">
+                  Naši skladiščni kontejnerji so idealna rešitev za podjetja in posameznike, ki iščejo varno, dostopno in fleksibilno skladiščenje. Kontejnerji so postavljeni na urejenih, varovanih lokacijah v Ptuju in Mariboru, dostop je mogoč kadar koli — tudi ob vikendih in praznikih. Minimalna najemna doba je en mesec, pogodbo pa je mogoče podaljšati brez zapletov.
+                </p>
+              </div>
             </div>
 
             <div className="bg-white/[0.05] rounded-2xl border border-white/[0.10] overflow-hidden">
