@@ -122,7 +122,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
               Najem skladiščnega kontejnerja
             </h2>
             <p className="text-steel-400 max-w-xl mx-auto">
-              Varno skladiščenje v kontejnerju 20' ali 40' na lokacijah Ptuj in Maribor
+              Varno skladiščenje v kontejnerju 20' ali 40' na naših lokacijah na Ptuju in v Mariborju ali vašem naslovu
             </p>
           </div>
 
