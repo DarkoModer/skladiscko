@@ -68,8 +68,8 @@ const ContainersPage: React.FC<ContainersPageProps> = ({ onPageChange }) => {
       </section>
 
       <section className="py-20 bg-white">
-        <div ref={grid.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
-          <div className={`flex flex-wrap items-center justify-between gap-4 mb-10 transition-all duration-700 ${grid.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className={`flex flex-wrap items-center justify-between gap-4 mb-10 transition-all duration-700 ${grid.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} ref={grid.ref}>
             <div className="flex gap-2">
               {filters.map((f) => (
                 <button
