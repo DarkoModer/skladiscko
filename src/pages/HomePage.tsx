@@ -145,7 +145,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
               </div>
               <div className="bg-white/[0.05] rounded-2xl border border-white/[0.10] p-5">
                 <p className="text-steel-300 text-sm leading-relaxed">
-                  Naši skladiščni kontejnerji so idealna rešitev za podjetja in posameznike, ki iščejo varno, dostopno in fleksibilno skladiščenje. Kontejnerji so postavljeni na urejenih, varovanih lokacijah v Ptuju in Mariboru, dostop je mogoč kadar koli — tudi ob vikendih in praznikih. Minimalna najemna doba je en mesec, pogodbo pa je mogoče podaljšati brez zapletov.
+                  Naši skladiščni kontejnerji so idealna rešitev za podjetja in posameznike, ki iščejo varno, dostopno in fleksibilno skladiščenje. Kontejnerji so postavljeni na urejenih, varovanih lokacijah v Ptuju in Mariboru ali na vaši lokaciji, dostop je mogoč kadar koli, tudi ob vikendih in praznikih. Minimalna najemna doba je en mesec, pogodbo pa je mogoče podaljšati brez zapletov.
                 </p>
               </div>
             </div>
