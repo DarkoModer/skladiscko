@@ -7,6 +7,14 @@ const faqs = [
   { q: 'Ali ponujate možnosti financiranja?', a: 'Da, ponujamo prilagodljive možnosti plačila za nakup kontejnerjev in izvedbo projektov.' },
   { q: 'Koliko časa traja izvedba projekta?', a: 'Večina projektov je dokončanih v 2-4 tednih od začetka del.' },
   { q: 'Ali nudite garancijo na izvedena dela?', a: 'Da, na vsa naša dela nudimo 2-letno garancijo, na kontejnerje pa standardno garancijo proizvajalca.' },
+  // Novi in posodobljeni QA:
+  { q: 'Katere dimenzije kontejnerjev imate v ponudbi?', a: 'Standardno nudimo 20-čeveljske (6m) in 40-čeveljske (12m) kontejnerje, po naročilu pa so na voljo tudi manjši 10-čeveljski (3m) kontejnerji.' },
+  { q: 'Kakšno podlago moram pripraviti za postavitev kontejnerja?', a: 'Kontejner potrebuje ravno in trdno podlago. Najbolj priporočljive so betonske točkovne temeljitve na vogalih ali utrjen tampon.' },
+  { q: 'Ali so kontejnerji primerni za bivanje ali pisarno?', a: 'Da, kontejnerje lahko popolnoma izoliramo, vgradimo okna, vrata in električno napeljavo ter jih spremenimo v sodobne bivalne ali pisarniške prostore.' },
+  { q: 'Ali lahko kontejner opremite po mojih željah?', a: 'Seveda. Nudimo celostno predelavo – od vgradnje polic, dodatnih vrat in prezračevanja do barvanja v želeno barvo po RAL lestvici.' },
+  { q: 'Kaj se zgodi, če kontejnerja ne potrebujem več?', a: 'Poleg najema in prodaje nudimo tudi možnost odkupa rabljenih kontejnerjev, če so v dobrem stanju.' },
+  { q: 'Ali so vaši kontejnerji vodotesni?', a: 'Vsi naši kontejnerji so pregledani in zagotavljamo, da so popolnoma neprepustni za veter in vodo (Wind & Watertight certifikat).' },
+  { q: 'Ali nudite prevoz in razkladanje na lokaciji?', a: 'Da, organiziramo prevoz s tovornjakom z dvigalom (hiab), ki kontejner postavi točno na predvideno mesto.' }
 ];
 
 const ContactPage: React.FC = () => {
