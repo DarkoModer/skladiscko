@@ -77,7 +77,7 @@ const ContactPage: React.FC = () => {
                 {[
                   { icon: <Phone className="h-5 w-5" />, label: 'Telefon', value: '069 633 480', sub: 'Na voljo 24/7', href: 'tel:069633480' },
                   { icon: <Mail className="h-5 w-5" />, label: 'E-pošta', value: 'info@skladiscko.si', sub: 'Odgovorimo v 24 urah', href: 'mailto:info@skladiscko.si' },
-                  { icon: <MapPin className="h-5 w-5" />, label: 'Naslov', value: 'Puhova ulica 12a', sub: '2250 Ptuj' },
+                  { icon: <MapPin className="h-5 w-5" />, label: 'Naslov', value: 'Puhova ulica 12a', sub: '2250 Ptuj', href: 'https://www.google.com/maps/place/Skladi%C5%A1%C4%8Dko+-+Prodaja+in+najem+kontejnerjev/@46.4189285,15.8835886,17z/data=!3m1!4b1!4m6!3m5!1s0x476f67ac507d0dbf:0xe9b7b60c1447379e!8m2!3d46.4189248!4d15.8861635!16s%2Fg%2F11z6n5km42?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D' },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4">
                     <div className="bg-steel-50 p-2.5 rounded-xl text-steel-600 h-fit">
@@ -86,7 +86,7 @@ const ContactPage: React.FC = () => {
                     <div>
                       <p className="text-xs text-steel-400 uppercase tracking-wider font-medium">{item.label}</p>
                       {item.href ? (
-                        <a href={item.href} className="font-semibold text-steel-900 hover:text-blue-600 transition-colors">{item.value}</a>
+                        <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined} className="font-semibold text-steel-900 hover:text-blue-600 transition-colors">{item.value}</a>
                       ) : (
                         <p className="font-semibold text-steel-900">{item.value}</p>
                       )}

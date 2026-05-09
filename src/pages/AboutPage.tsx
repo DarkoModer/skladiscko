@@ -106,7 +106,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onPageChange }) => {
             <p className="text-steel-500">Ključni mejniki naše rasti</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
             <div className="space-y-4">
               {timeline.map((item, i) => {
                 const isLatest = i === timeline.length - 1;
@@ -127,18 +127,16 @@ const AboutPage: React.FC<AboutPageProps> = ({ onPageChange }) => {
               })}
             </div>
 
-            <div className="lg:sticky lg:top-24">
-              <div className="relative rounded-2xl overflow-hidden group">
-                <img
-                  src={dostava}
-                  alt="Dostavljeni kontejnerji"
-                  className="w-full h-72 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-steel-900/80 to-transparent flex items-end p-6">
-                  <div>
-                    <div className="text-3xl font-bold text-white mb-1">250+</div>
-                    <div className="text-sm text-white/70">Uspešno dostavljenih kontejnerjev</div>
-                  </div>
+            <div className="relative rounded-2xl overflow-hidden group min-h-[300px]">
+              <img
+                src={dostava}
+                alt="Dostavljeni kontejnerji"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-steel-900/80 to-transparent flex items-end p-6">
+                <div>
+                  <div className="text-3xl font-bold text-white mb-1">250+</div>
+                  <div className="text-sm text-white/70">Uspešno dostavljenih kontejnerjev</div>
                 </div>
               </div>
             </div>
