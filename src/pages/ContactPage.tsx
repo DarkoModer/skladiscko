@@ -3,7 +3,7 @@ import { useInView } from '../hooks/useInView';
 import { Phone, Mail, MapPin, Send, ChevronDown } from 'lucide-react';
 
 const faqs = [
-  { q: 'Kako hitro lahko dostavite kontejner?', a: 'Večino kontejnerjev dostavimo v 2-3 delovnih dneh, odvisno od lokacije in razpoložljivosti.' },
+  { q: 'Kako hitro lahko dostavite kontejner?', a: 'Večino kontejnerjev dostavimo v 1-3 delovnih dneh, odvisno od lokacije in razpoložljivosti.' },
   { q: 'Ali ponujate možnosti financiranja?', a: 'Da, ponujamo prilagodljive možnosti plačila za nakup kontejnerjev in izvedbo projektov.' },
   { q: 'Koliko časa traja izvedba projekta?', a: 'Večina projektov je dokončanih v 2-4 tednih od začetka del.' },
   { q: 'Ali nudite garancijo na izvedena dela?', a: 'Da, na vsa naša dela nudimo 2-letno garancijo, na kontejnerje pa standardno garancijo proizvajalca.' },
