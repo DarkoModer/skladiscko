@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import kontejnerji from '../Photos/kontejnerji.webp';
 
 interface HeroProps {
@@ -6,6 +7,7 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onPageChange }) => {
+  const { t } = useTranslation();
   return (
     <section className="relative min-h-[100vh] flex items-center overflow-hidden">
       <div className="absolute inset-0">
@@ -32,19 +34,19 @@ const Hero: React.FC<HeroProps> = ({ onPageChange }) => {
           <div className="opacity-0 animate-fade-in-up">
             <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/10 text-accent-300 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-400 animate-pulse" />
-              250+ dostavljenih kontejnerjev
+              250+ {t('hero.cta').split(' ')[0]}
             </span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.08] mb-6 opacity-0 animate-fade-in-up animate-delay-100">
-            Vaš partner za
+            {t('hero.title')}
             <span className="block metallic-text mt-1">
-              skladiščne rešitve
+              {t('hero.subtitle')}
             </span>
           </h1>
 
           <p className="text-lg md:text-xl text-steel-300 leading-relaxed mb-10 max-w-lg opacity-0 animate-fade-in-up animate-delay-200">
-            Kakovostni kontejnerji, skladiščni projekti in najemne storitve. Zanesljivo in hitro.
+            {t('hero.subtitle')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up animate-delay-300">
@@ -52,22 +54,22 @@ const Hero: React.FC<HeroProps> = ({ onPageChange }) => {
               onClick={() => onPageChange('containers')}
               className="btn-accent group"
             >
-              Raziščite ponudbo
+              {t('hero.cta')}
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </button>
             <button
               onClick={() => onPageChange('contact')}
               className="border border-white/20 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-white/10 hover:border-white/30 transition-all duration-300 backdrop-blur-sm"
             >
-              Kontaktirajte nas
+              {t('contact.title')}
             </button>
           </div>
 
           <div className="flex gap-10 mt-16 opacity-0 animate-fade-in-up animate-delay-500">
             {[
-              { value: '250+', label: 'Kontejnerjev' },
-              { value: '25+', label: 'Projektov' },
-              { value: '6+', label: 'Let izkušenj' },
+              { value: '250+', label: 'Delivered' },
+              { value: '25+', label: 'Projects' },
+              { value: '6+', label: 'Years' },
             ].map((stat, i) => (
               <div key={i} className="flex items-center gap-10">
                 <div>

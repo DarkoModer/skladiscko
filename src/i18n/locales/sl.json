@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "containers": "Kontejnerji",
+    "storage": "Najem skladišč",
+    "construction": "Izgradnja",
+    "about": "O nas",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Skladiščne rešitve za vaše potrebe",
+    "subtitle": "Zaupanja vreden ponudnik kontejnerjev, skladišč in gradbenih storitev.",
+    "cta": "Pošlji povpraševanje"
+  },
+  "services": {
+    "title": "Vse na enem mestu",
+    "subtitle": "Naše storitve",
+    "containers": {
+      "title": "Kontejnerji",
+      "desc": "Premium kontejnerji za vse potrebe - od skladiščenja do transporta."
+    },
+    "storage": {
+      "title": "Najem skladišč",
+      "desc": "Skladiščne hale in šotori na Ptuju. Fleksibilni pogoji."
+    },
+    "construction": {
+      "title": "Izgradnja",
+      "desc": "Imate zemljišče? Zgradimo skladišče od A do Ž."
+    }
+  },
+  "rental": {
+    "title": "Najem skladiščnega kontejnerja",
+    "subtitle": "Varno skladiščenje v kontejnerju 20' ali 40' na lokacijah Ptuj in Maribor",
+    "features": {
+      "access24": "Dostop 24/7",
+      "key": "Vaš ključ",
+      "secure": "Varovan prostor",
+      "location": "Ptuj in Maribor",
+      "container20": "20' (~14 m²)",
+      "container40": "40' (~28 m²)"
+    },
+    "description": "Naši skladiščni kontejnerji so idealna rešitev za podjetja in posameznike, ki iščejo varno, dostopno in fleksibilno skladiščenje. Kontejnerji so postavljeni na urejenih, varovanih lokacijah v Ptuju in Mariboru, dostop je mogoč kadar koli — tudi ob vikendih in praznikih. Minimalna najemna doba je en mesec, pogodbo pa je mogoče podaljšati brez zapletov.",
+    "pricing": "Cenik najema",
+    "period": "kos / mesec + DDV",
+    "best": "Najboljša",
+    "moreInfo": "Več o najemu"
+  },
+  "cta": {
+    "title": "Pripravite se na novi projekt?",
+    "subtitle": "Brezplačna svetovanja, hitri odzivni časi in konkurenčne cene.",
+    "button": "Brezplačna ponudka"
+  },
+  "footer": {
+    "desc": "Zaupanja vreden ponudnik skladiščnih rešitev z več kot 6 leti izkušenj.",
+    "services": "Storitve",
+    "follow": "Sledite nam",
+    "available": "Na voljo 24/7",
+    "copyright": "Vse pravice pridržane."
+  },
+  "contact": {
+    "title": "Stopite v stik",
+    "subtitle": "Naša ekipa je pripravljena vam pomagati. Brezplačno svetovanje in konkurenčna ponudba.",
+    "contactInfo": "Kontaktni podatki",
+    "phone": "Telefon",
+    "phoneAvailable": "Na voljo 24/7",
+    "email": "E-pošta",
+    "emailResponse": "Odgovorimo v 24 urah",
+    "address": "Naslov",
+    "areas": "Območja storitev",
+    "sendMessage": "Pošljite sporočilo",
+    "submit": "Pošlji sporočilo",
+    "sending": "Pošiljam...",
+    "success": "Vaše povpraševanje je bilo uspešno poslano.",
+    "error": "Prišlo je do napake. Pokličite nas na 069 633 480.",
+    "faqs": "Pogosta vprašanja",
+    "nameLabel": "Ime",
+    "emailLabel": "E-pošta",
+    "phoneLabel": "Telefon",
+    "serviceLabel": "Storitev",
+    "messageLabel": "Sporočilo",
+    "messagePlaceholder": "Povejte nam o vaših potrebah...",
+    "required": "*"
+  },
+  "about": {
+    "title": "O podjetju Skladiščko",
+    "subtitle": "Zaupanja vreden ponudnik skladiščnih rešitev z več kot 6 leti izkušenj.",
+    "mission": "Naša misija",
+    "missionText": "Strankam zagotavljamo varno in zanesljivo skladiščenje ter celovite rešitve, ki izpolnjujejo potrebe sodobnega poslovanja in zasebnih uporabnikov.",
+    "vision": "Naša vizija",
+    "visionText": "Vodilni ponudnik skladiščnih rešitev v regiji, prepoznaven po hitrosti, zanesljivosti in strokovnosti pri vsakem projektu.",
+    "values": "Naše vrednote",
+    "valuesSub": "Načela, ki vodijo naše delo",
+    "path": "Naša pot",
+    "pathSub": "Ključni mejniki naše rasti",
+    "cta": "Pripravljeni za sodelovanje?",
+    "ctaSub": "Brezplačno svetovanje in konkurenčna ponudba",
+    "delivered": "Uspešno dostavljenih kontejnerjev"
+  }
+}

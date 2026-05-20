@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "containers": "Containers",
+    "storage": "Storage Rental",
+    "construction": "Construction",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Storage solutions for your needs",
+    "subtitle": "Trusted provider of containers, storage facilities and construction services.",
+    "cta": "Send inquiry"
+  },
+  "services": {
+    "title": "Everything in one place",
+    "subtitle": "Our services",
+    "containers": {
+      "title": "Containers",
+      "desc": "Premium containers for all needs - from storage to transport."
+    },
+    "storage": {
+      "title": "Storage Rental",
+      "desc": "Storage halls and tents in Ptuj. Flexible terms."
+    },
+    "construction": {
+      "title": "Construction",
+      "desc": "Have land? We build warehouses from A to Z."
+    }
+  },
+  "rental": {
+    "title": "Storage Container Rental",
+    "subtitle": "Secure storage in 20' or 40' containers at Ptuj and Maribor locations",
+    "features": {
+      "access24": "24/7 Access",
+      "key": "Your key",
+      "secure": "Secured space",
+      "location": "Ptuj and Maribor",
+      "container20": "20' (~14 m²)",
+      "container40": "40' (~28 m²)"
+    },
+    "description": "Our storage containers are an ideal solution for businesses and individuals looking for safe, accessible and flexible storage. Containers are placed at well-maintained, secured locations in Ptuj and Maribor, accessible anytime - even on weekends and holidays. The minimum rental period is one month, and the contract can be extended without complications.",
+    "pricing": "Rental pricing",
+    "period": "pcs / month + VAT",
+    "best": "Best offer",
+    "moreInfo": "Learn more"
+  },
+  "cta": {
+    "title": "Ready for a new project?",
+    "subtitle": "Free consultations, fast response times and competitive prices.",
+    "button": "Get free quote"
+  },
+  "footer": {
+    "desc": "Trusted provider of storage solutions with over 6 years of experience.",
+    "services": "Services",
+    "follow": "Follow us",
+    "available": "Available 24/7",
+    "copyright": "All rights reserved."
+  },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "Our team is ready to help you. Free consultation and competitive offers.",
+    "contactInfo": "Contact Information",
+    "phone": "Phone",
+    "phoneAvailable": "Available 24/7",
+    "email": "Email",
+    "emailResponse": "We respond within 24 hours",
+    "address": "Address",
+    "areas": "Service areas",
+    "sendMessage": "Send message",
+    "submit": "Send message",
+    "sending": "Sending...",
+    "success": "Your inquiry has been sent successfully.",
+    "error": "An error occurred. Please call us at 069 633 480.",
+    "faqs": "Frequently Asked Questions",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "serviceLabel": "Service",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Tell us about your needs...",
+    "required": "*"
+  },
+  "about": {
+    "title": "About Skladiščko",
+    "subtitle": "Trusted provider of storage solutions with over 6 years of experience.",
+    "mission": "Our mission",
+    "missionText": "We provide customers with safe and reliable storage and comprehensive solutions that meet the needs of modern business and private users.",
+    "vision": "Our vision",
+    "visionText": "Leading provider of storage solutions in the region, recognized for speed, reliability and professionalism on every project.",
+    "values": "Our values",
+    "valuesSub": "Principles that guide our work",
+    "path": "Our journey",
+    "pathSub": "Key milestones of our growth",
+    "cta": "Ready to collaborate?",
+    "ctaSub": "Free consultation and competitive prices",
+    "delivered": "Containers successfully delivered"
+  }
+}
