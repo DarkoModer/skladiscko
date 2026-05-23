@@ -30,9 +30,9 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
               Zaupanja vreden ponudnik skladiščnih rešitev z več kot 6 leti izkušenj.
             </p>
             <div className="flex flex-col gap-3">
-              <a href="tel:069633480" className="flex items-center gap-3 text-steel-400 hover:text-accent-300 transition-colors duration-300">
+              <a href="tel:+38669633480" className="flex items-center gap-3 text-steel-400 hover:text-accent-300 transition-colors duration-300">
                 <Phone className="h-4 w-4" />
-                <span>069 633 480</span>
+                <span>+386 69 633 480</span>
               </a>
               <a href="mailto:info@skladiscko.si" className="flex items-center gap-3 text-steel-400 hover:text-accent-300 transition-colors duration-300">
                 <Mail className="h-4 w-4" />

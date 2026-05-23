@@ -83,7 +83,7 @@ const ContactPage: React.FC = () => {
 
               <div className="space-y-5">
                 {[
-                  { icon: <Phone className="h-5 w-5" />, label: 'Telefon', value: '069 633 480', sub: 'Na voljo 24/7', href: 'tel:069633480' },
+                  { icon: <Phone className="h-5 w-5" />, label: 'Telefon', value: '+386 69 633 480', sub: 'Na voljo 24/7', href: 'tel:+38669633480' },
                   { icon: <Mail className="h-5 w-5" />, label: 'E-pošta', value: 'info@skladiscko.si', sub: 'Odgovorimo v 24 urah', href: 'mailto:info@skladiscko.si' },
                   { icon: <MapPin className="h-5 w-5" />, label: 'Naslov', value: 'Puhova ulica 12a', sub: '2250 Ptuj', href: 'https://www.google.com/maps/place/Skladi%C5%A1%C4%8Dko+-+Prodaja+in+najem+kontejnerjev/@46.4189285,15.8835886,17z/data=!3m1!4b1!4m6!3m5!1s0x476f67ac507d0dbf:0xe9b7b60c1447379e!8m2!3d46.4189248!4d15.8861635!16s%2Fg%2F11z6n5km42?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D' },
                 ].map((item, i) => (
@@ -132,7 +132,7 @@ const ContactPage: React.FC = () => {
 
                 {submitStatus === 'error' && (
                   <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
-                    <p className="text-red-800 text-sm">Prišlo je do napake. Pokličite nas na 069 633 480.</p>
+                    <p className="text-red-800 text-sm">Prišlo je do napake. Pokličite nas na +386 69 633 480.</p>
                   </div>
                 )}
 

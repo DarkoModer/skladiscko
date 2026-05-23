@@ -245,8 +245,8 @@ const StoragePage: React.FC<StoragePageProps> = ({ onPageChange }) => {
             <button onClick={() => onPageChange?.('contact')} className="btn-accent">
               Pridobite ponudbo
             </button>
-            <a href="tel:069633480" className="border border-white/15 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-white/5 transition-all duration-300">
-              069 633 480
+            <a href="tel:+38669633480" className="border border-white/15 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-white/5 transition-all duration-300">
+              +386 69 633 480
             </a>
           </div>
         </div>

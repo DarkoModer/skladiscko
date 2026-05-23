@@ -149,8 +149,8 @@ const ConstructionPage: React.FC<ConstructionPageProps> = ({ onPageChange }) => 
               Pridobite ponudbo
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            <a href="tel:069633480" className="border border-white/15 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-white/5 transition-all duration-300">
-              069 633 480
+            <a href="tel:+38669633480" className="border border-white/15 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-white/5 transition-all duration-300">
+              +386 69 633 480
             </a>
           </div>
         </div>
