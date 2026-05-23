@@ -3,6 +3,10 @@ import { Truck, ArrowRight, MapPin, Shield, Clock, Package, CheckCircle, ArrowUp
 import dostava1 from '../Photos/dostava1.jpg';
 import dostava2 from '../Photos/dostava2.jpeg';
 import dostava3 from '../Photos/dostava3.jpg';
+import dostava4 from '../Photos/hz_dostava1.jpg';
+import dostava5 from '../Photos/hz_dostava2.jpeg';
+import dostava6 from '../Photos/star_line_logistics.png';
+
 
 interface TransportPageProps {
   onPageChange?: (page: string) => void;
@@ -52,7 +56,7 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 transition-all duration-700 ${servicesSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
             <div className="bg-white rounded-2xl border-2 border-blue-600 overflow-hidden hover-lift shadow-lg shadow-blue-600/10">
               <div className="relative h-72 overflow-hidden">
-                <img src={dostava1} alt="Prevoz kontejnerja" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = 'https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=1200'; }} />
+                <img src={dostava5} alt="Prevoz kontejnerja" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = 'https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=1200'; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 <div className="absolute top-3 left-3">
                   <span className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">Kontejnerski prevoz</span>
