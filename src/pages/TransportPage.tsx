@@ -167,10 +167,10 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
 
           <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 transition-all duration-700 ${coverageSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
             {[
-              { country: 'Slovenija', flag: '🇸🇮', description: 'Celotna država', deliveries: '150+' },
-              { country: 'Avstrija', flag: '🇦🇹', description: 'Vzhodna in južna Avstrija', deliveries: '50+' },
-              { country: 'Madžarska', flag: '🇭🇺', description: 'Zahodna Madžarska', deliveries: '30+' },
-              { country: 'Italija', flag: '🇮🇹', description: 'Severna Italija', deliveries: '20+' },
+              { country: 'Slovenija', flag: '🇸🇮', description: 'Celotna država', deliveries: '500+' },
+              { country: 'Avstrija', flag: '🇦🇹', description: 'Vzhodna in južna Avstrija', deliveries: '150+' },
+              { country: 'Madžarska', flag: '🇭🇺', description: 'Zahodna Madžarska', deliveries: '300+' },
+              { country: 'Italija', flag: '🇮🇹', description: 'Severna Italija', deliveries: '200+' },
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl p-6 border border-steel-200 hover:border-blue-300 transition-all duration-300 text-center">
                 <div className="text-4xl mb-3">{item.flag}</div>
@@ -273,10 +273,10 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
                 {[
-                  { value: '250+', label: 'Prevozov' },
+                  { value: '1000+', label: 'Prevozov' },
                   { value: '24/7', label: 'Na voljo' },
                   { value: '100%', label: 'Zanesljivost' },
-                  { value: '4 države', label: 'Pokritost' },
+                  { value: 'SI, AT, HU, IT', label: 'Pokritost' },
                 ].map((stat, i) => (
                   <div key={i} className="text-center">
                     <div className="text-3xl font-bold text-white">{stat.value}</div>
