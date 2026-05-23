@@ -111,7 +111,7 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
                 <img src={dostava7} alt="Dostava z dvigalom Hiab" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = 'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=1200'; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 <div className="absolute top-3 left-3">
-                  <span className="bg-steel-800 text-white text-xs font-bold px-3 py-1 rounded-full">Dostava z dvigalom Hiab</span>
+                  <span className="bg-steel-800 text-white text-xs font-bold px-3 py-1 rounded-full">Dostava z dvigalom</span>
                 </div>
               </div>
               <div className="p-6">
@@ -144,7 +144,7 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
                 <div className="bg-steel-800 rounded-xl p-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-sm font-medium text-steel-200">Cena dostave z Hiab</span>
+                      <span className="text-sm font-medium text-steel-200">Cena dostave z dvigalom</span>
                       <p className="text-xs text-steel-400">kompleksnejša dostava</p>
                     </div>
                     <div className="text-right">
