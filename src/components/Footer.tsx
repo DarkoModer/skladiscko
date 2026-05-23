@@ -8,6 +8,7 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
   const links = [
     { name: 'Kontejnerji', id: 'containers' },
     { name: 'Najem skladišč', id: 'storage' },
+    { name: 'Prevozi', id: 'transport' },
     { name: 'Izgradnja', id: 'construction' },
     { name: 'O nas', id: 'about' },
     { name: 'Kontakt', id: 'contact' },

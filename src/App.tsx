@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ContainersPage from './pages/ContainersPage';
 import StoragePage from './pages/StoragePage';
+import TransportPage from './pages/TransportPage';
 import ConstructionPage from './pages/ConstructionPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
@@ -25,6 +26,8 @@ function App() {
         return <ContainersPage onPageChange={handlePageChange} />;
       case 'storage':
         return <StoragePage onPageChange={handlePageChange} />;
+      case 'transport':
+        return <TransportPage onPageChange={handlePageChange} />;
       case 'construction':
         return <ConstructionPage onPageChange={handlePageChange} />;
       case 'about':

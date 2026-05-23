@@ -10,6 +10,7 @@ const navigation = [
   { name: 'Domov', id: 'home' },
   { name: 'Kontejnerji', id: 'containers' },
   { name: 'Najem', id: 'storage' },
+  { name: 'Prevozi', id: 'transport' },
   { name: 'Izgradnja', id: 'construction' },
   { name: 'O nas', id: 'about' },
   { name: 'Kontakt', id: 'contact' },
