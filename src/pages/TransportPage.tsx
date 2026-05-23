@@ -52,7 +52,7 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
       <section className="py-20 bg-steel-50">
         <div ref={servicesSection.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`text-center mb-12 transition-all duration-700 ${servicesSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-3xl font-bold text-steel-900 mb-3">Naše storitve</h2>
+            <h2 className="text-3xl font-bold text-steel-900 mb-3">Naše transportne storitve</h2>
             <p className="text-steel-500">Dva načina dostave za različne potrebe</p>
           </div>
 
