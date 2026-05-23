@@ -3,6 +3,7 @@ import { useInView } from '../hooks/useInView';
 import { Container, Building, Hammer, ArrowRight, Shield, Truck, Clock, MapPin, Lock, Sparkles } from 'lucide-react';
 import luka1 from '../Photos/luka1.jpg';
 import gradnja from '../Photos/gradnja.jpg';
+import dostava1 from '../Photos/dostava1.jpg';
 
 interface HomePageProps {
   onPageChange: (page: string) => void;
@@ -26,7 +27,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: <Container className="h-6 w-6" />,
@@ -48,6 +49,17 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                 page: 'storage',
                 iconBg: 'bg-sky-50 text-sky-700',
                 accentBar: 'from-sky-500 to-sky-300',
+                isNew: false,
+              },
+              {
+                icon: <Truck className="h-6 w-6" />,
+                title: 'Prevozi',
+                desc: 'Kontejnerski prevozi po Sloveniji, Avstriji, Madžarski in Italiji.',
+                img: dostava1,
+                fallback: 'https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=800',
+                page: 'transport',
+                iconBg: 'bg-indigo-50 text-indigo-700',
+                accentBar: 'from-indigo-600 to-indigo-400',
                 isNew: false,
               },
               {

@@ -1,7 +1,8 @@
 import { useInView } from '../hooks/useInView';
-import { Truck, ArrowRight, MapPin, Shield, Clock, Package, CheckCircle, ArrowUp } from 'lucide-react';
+import { Truck, ArrowRight, MapPin, Shield, Clock, Package, CheckCircle, ArrowUp, Globe, Users, Calendar, Zap } from 'lucide-react';
 import dostava1 from '../Photos/dostava1.jpg';
 import dostava2 from '../Photos/dostava2.jpeg';
+import dostava3 from '../Photos/dostava3.jpg';
 
 interface TransportPageProps {
   onPageChange?: (page: string) => void;
@@ -10,6 +11,8 @@ interface TransportPageProps {
 const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
   const hero = useInView();
   const servicesSection = useInView();
+  const coverageSection = useInView();
+  const processSection = useInView();
   const cta = useInView();
 
   return (
@@ -25,8 +28,16 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
               Kontejnerski prevozi
             </h1>
             <p className="text-steel-400 text-lg leading-relaxed max-w-lg">
-              Zanesljivi prevozi kontejnerjev po celotni Sloveniji. Dostava z dvigalom Hiab na vašo lokacijo.
+              Zanesljivi prevozi kontejnerjev po Sloveniji, Avstriji, Madžarski in Italiji. Dostava z dvigalom Hiab na vašo lokacijo.
             </p>
+            <div className="flex flex-wrap gap-3 mt-6">
+              {['Slovenija', 'Avstrija', 'Madžarska', 'Italija'].map((country, i) => (
+                <span key={i} className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/15 text-white text-sm font-medium rounded-full">
+                  <Globe className="h-4 w-4 text-accent-400" />
+                  {country}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -40,7 +51,7 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
 
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 transition-all duration-700 ${servicesSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
             <div className="bg-white rounded-2xl border-2 border-blue-600 overflow-hidden hover-lift shadow-lg shadow-blue-600/10">
-              <div className="relative h-52 overflow-hidden">
+              <div className="relative h-72 overflow-hidden">
                 <img src={dostava1} alt="Prevoz kontejnerja" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = 'https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=1200'; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 <div className="absolute top-3 left-3">
@@ -89,7 +100,7 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
             </div>
 
             <div className="bg-white rounded-2xl border-2 border-steel-800 overflow-hidden hover-lift shadow-lg shadow-steel-800/10">
-              <div className="relative h-52 overflow-hidden">
+              <div className="relative h-72 overflow-hidden">
                 <img src={dostava2} alt="Dostava z dvigalom Hiab" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = 'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=1200'; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 <div className="absolute top-3 left-3">
@@ -140,7 +151,109 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
         </div>
       </section>
 
+      <section className="py-16 bg-steel-50">
+        <div ref={coverageSection.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className={`text-center mb-10 transition-all duration-700 ${coverageSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2 className="text-3xl font-bold text-steel-900 mb-3">Mednarodni prevozi</h2>
+            <p className="text-steel-500">Pokrivamo štiri države srednje Evrope</p>
+          </div>
+
+          <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 transition-all duration-700 ${coverageSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
+            {[
+              { country: 'Slovenija', flag: '🇸🇮', description: 'Celotna država', deliveries: '150+' },
+              { country: 'Avstrija', flag: '🇦🇹', description: 'Vzhodna in južna Avstrija', deliveries: '50+' },
+              { country: 'Madžarska', flag: '🇭🇺', description: 'Zahodna Madžarska', deliveries: '30+' },
+              { country: 'Italija', flag: '🇮🇹', description: 'Severna Italija', deliveries: '20+' },
+            ].map((item, i) => (
+              <div key={i} className="bg-white rounded-xl p-6 border border-steel-200 hover:border-blue-300 transition-all duration-300 text-center">
+                <div className="text-4xl mb-3">{item.flag}</div>
+                <h3 className="text-lg font-bold text-steel-900 mb-1">{item.country}</h3>
+                <p className="text-sm text-steel-500 mb-3">{item.description}</p>
+                <div className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold inline-block">
+                  {item.deliveries} prevozov
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 bg-white">
+        <div ref={processSection.ref} className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className={`text-center mb-10 transition-all duration-700 ${processSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2 className="text-3xl font-bold text-steel-900 mb-3">Kako delujemo?</h2>
+            <p className="text-steel-500">Preprost proces od naročila do dostave</p>
+          </div>
+
+          <div className={`grid grid-cols-1 md:grid-cols-4 gap-6 transition-all duration-700 ${processSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
+            {[
+              { step: '01', title: 'Povpraševanje', desc: 'Kontaktirajte nas z zahtevami', icon: <Users className="h-6 w-6" /> },
+              { step: '02', title: 'Ponudba', desc: 'Prejmete ceno in rok dostave', icon: <Calendar className="h-6 w-6" /> },
+              { step: '03', title: 'Naročilo', desc: 'Potrdite naročilo in datum', icon: <CheckCircle className="h-6 w-6" /> },
+              { step: '04', title: 'Dostava', desc: 'Prevzamete kontejner na lokaciji', icon: <Truck className="h-6 w-6" /> },
+            ].map((item, i) => (
+              <div key={i} className="relative">
+                <div className="bg-steel-50 rounded-xl p-6 border border-steel-200 hover:border-blue-300 transition-all duration-300 relative">
+                  <div className="absolute -top-3 -left-3 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                    {item.step}
+                  </div>
+                  <div className="bg-blue-100 w-12 h-12 rounded-xl flex items-center justify-center text-blue-600 mb-4 mt-2">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-steel-900 mb-2">{item.title}</h3>
+                  <p className="text-sm text-steel-500">{item.desc}</p>
+                </div>
+                {i < 3 && (
+                  <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                    <ArrowRight className="h-5 w-5 text-steel-300" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-steel-50">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-steel-900 mb-4">Strokovna ekipa</h2>
+              <p className="text-steel-600 mb-6 leading-relaxed">
+                Naša ekipa ima dolgoletne izkušnje s prevozi kontejnerjev. Vsak prevoz skrbno načrtujemo,
+                upoštevamo vse posebnosti trase in zagotovimo, da bo vaš kontejner dostavljen pravočasno
+                in brez poškodb.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  'Izkušeni vozniki z vsemi potrebnimi certifikati',
+                  'Natančno načrtovanje trase in časa dostave',
+                  'Zavarovanje blaga med transportom',
+                  'Fleksibilnost glede urnikov dostave',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-steel-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="relative rounded-2xl overflow-hidden h-80">
+              <img
+                src={dostava3}
+                alt="Prevoz kontejnerja"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.src = 'https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=1200';
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-white">
         <div className="max-w-5xl mx-auto px-5 sm:px-8">
           <div className="section-dark rounded-2xl p-8 md:p-10 relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none">
@@ -148,7 +261,7 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
             </div>
             <div className="relative">
               <div className="flex items-center justify-center gap-2 mb-3">
-                <Truck className="h-5 w-5 text-amber-400" />
+                <Zap className="h-5 w-5 text-amber-400" />
                 <h3 className="text-xl font-bold text-white">Zakaj izbrati nas?</h3>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
@@ -156,7 +269,7 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
                   { value: '250+', label: 'Prevozov' },
                   { value: '24/7', label: 'Na voljo' },
                   { value: '100%', label: 'Zanesljivost' },
-                  { value: 'Celotna SI', label: 'Pokritost' },
+                  { value: '4 države', label: 'Pokritost' },
                 ].map((stat, i) => (
                   <div key={i} className="text-center">
                     <div className="text-3xl font-bold text-white">{stat.value}</div>
