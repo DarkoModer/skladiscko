@@ -247,7 +247,7 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
             </div>
             <div className="relative rounded-2xl overflow-hidden h-80">
               <img
-                src={dostava9}
+                src={dostava8}
                 alt="Prevoz kontejnerja"
                 className="w-full h-full object-cover"
                 onError={(e) => {
