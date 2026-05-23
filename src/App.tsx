@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -13,11 +13,15 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [pageKey, setPageKey] = useState(0);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handlePageChange = (page: string) => {
     if (page === currentPage) return;
     setCurrentPage(page);
     setPageKey((k) => k + 1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   const renderPage = () => {

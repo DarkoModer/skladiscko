@@ -167,6 +167,7 @@ const ContactPage: React.FC = () => {
                         <option value="Kontejnerji - nakup">Kontejnerji - nakup</option>
                         <option value="Kontejnerji - najem">Kontejnerji - najem</option>
                         <option value="Skladiščne rešitve">Skladiščne rešitve</option>
+                        <option value="Prevoz kontejnerja">Prevoz kontejnerja</option>
                         <option value="Priprava terena">Priprava terena</option>
                         <option value="Splošno svetovanje">Splošno svetovanje</option>
                       </select>
