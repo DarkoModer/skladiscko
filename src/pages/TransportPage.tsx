@@ -6,6 +6,9 @@ import dostava3 from '../Photos/dostava3.jpg';
 import dostava4 from '../Photos/hz_dostava1.jpg';
 import dostava5 from '../Photos/hz_dostava2.jpeg';
 import dostava6 from '../Photos/star_line_logistics.png';
+import dostava7 from '../Photos/star_line_logistics_2.png';
+import dostava8 from '../Photos/star_line_logistics_3.png';
+import dostava9 from '../Photos/star_line_logistics_4.png';
 
 
 interface TransportPageProps {
@@ -105,7 +108,7 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
 
             <div className="bg-white rounded-2xl border-2 border-steel-800 overflow-hidden hover-lift shadow-lg shadow-steel-800/10">
               <div className="relative h-72 overflow-hidden">
-                <img src={dostava2} alt="Dostava z dvigalom Hiab" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = 'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=1200'; }} />
+                <img src={dostava7} alt="Dostava z dvigalom Hiab" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = 'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=1200'; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 <div className="absolute top-3 left-3">
                   <span className="bg-steel-800 text-white text-xs font-bold px-3 py-1 rounded-full">Dvigalo Hiab</span>
@@ -244,7 +247,7 @@ const TransportPage: React.FC<TransportPageProps> = ({ onPageChange }) => {
             </div>
             <div className="relative rounded-2xl overflow-hidden h-80">
               <img
-                src={dostava6}
+                src={dostava9}
                 alt="Prevoz kontejnerja"
                 className="w-full h-full object-cover"
                 onError={(e) => {
