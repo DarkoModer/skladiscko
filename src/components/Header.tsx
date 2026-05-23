@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Container } from 'lucide-react';
-import LanguageSwitcher from './LanguageSwitcher';
 
 interface HeaderProps {
   currentPage: string;
@@ -79,10 +78,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-3">
-            <LanguageSwitcher />
-          </div>
-
           <button
             className={`md:hidden p-2 rounded-lg transition-all duration-300 ${
               scrolled
@@ -124,9 +119,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => {
               {item.name}
             </button>
           ))}
-          <div className="border-t border-steel-100 mt-3 pt-3">
-            <LanguageSwitcher />
-          </div>
         </nav>
       </div>
     </header>
