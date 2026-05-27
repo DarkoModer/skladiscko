@@ -13,6 +13,8 @@ import SeoNajemKontejnerjaZaShranjevanje from './pages/SeoNajemKontejnerjaZaShra
 import SeoSkladiscniKontejnerCena from './pages/SeoSkladiscniKontejnerCena';
 import SeoSkladiscniKontejnerji from './pages/SeoSkladiscniKontejnerji';
 import SeoSkladiscniKontejnerLokacija from './pages/SeoSkladiscniKontejnerLokacija';
+import SeoCenaLadijskiKontejner from './pages/SeoCenaLadijskiKontejner';
+import LadijskiKontejnerjiPage from './pages/LadijskiKontejnerjiPage';
 import { locations } from './data/locations';
 
 const locationMap = Object.fromEntries(locations.map(l => [l.slug, l]));
@@ -59,6 +61,10 @@ function App() {
         return <SeoSkladiscniKontejnerCena onPageChange={handlePageChange} />;
       case 'seo-skladiscni-kontejnerji':
         return <SeoSkladiscniKontejnerji onPageChange={handlePageChange} />;
+      case 'seo-cena-ladijski-kontejner':
+        return <SeoCenaLadijskiKontejner onPageChange={handlePageChange} />;
+      case 'ladijski-kontejnerji':
+        return <LadijskiKontejnerjiPage onPageChange={handlePageChange} />;
       default:
         return <HomePage onPageChange={handlePageChange} />;
     }
