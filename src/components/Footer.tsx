@@ -1,4 +1,5 @@
 import { Container, Phone, Mail, MapPin, Facebook, ArrowRight } from 'lucide-react';
+import { locations } from '../data/locations';
 
 interface FooterProps {
   onPageChange: (page: string) => void;
@@ -21,11 +22,13 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
     { name: 'Skladiščni kontejnerji', id: 'seo-skladiscni-kontejnerji' },
   ];
 
+  const locationLinks = locations.map(l => ({ name: l.city, id: l.slug }));
+
   return (
     <footer className="section-dark text-white">
       <div className="divider-glow" />
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2.5 mb-5">
               <div className="bg-gradient-to-br from-steel-600 to-steel-700 p-1.5 rounded-lg">
@@ -54,6 +57,17 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
                 <MapPin className="h-4 w-4 flex-shrink-0" />
                 <span>Puhova ulica 12a, 2250 Ptuj</span>
               </a>
+            </div>
+            <div className="flex items-center gap-3 mt-6">
+              <a
+                href="https://www.facebook.com/profile.php?id=61577763940228"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-steel-800/50 hover:bg-steel-700/50 text-steel-400 hover:text-accent-300 transition-colors duration-300"
+              >
+                <Facebook className="h-4 w-4" />
+              </a>
+              <span className="text-sm text-steel-500">Na voljo 24/7</span>
             </div>
           </div>
 
@@ -92,21 +106,20 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-steel-300 mb-5">Sledite nam</h4>
-            <a
-              href="https://www.facebook.com/profile.php?id=61577763940228"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-steel-400 hover:text-accent-300 transition-colors duration-300 group"
-            >
-              <div className="p-2 rounded-lg bg-steel-800/50 group-hover:bg-steel-700/50 transition-colors duration-300">
-                <Facebook className="h-4 w-4" />
-              </div>
-              <span>Facebook</span>
-            </a>
-            <div className="mt-8">
-              <p className="text-sm text-steel-500">Na voljo 24/7</p>
-            </div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-steel-300 mb-5">Skladiščni kontejner po krajih</h4>
+            <ul className="space-y-3">
+              {locationLinks.map((link) => (
+                <li key={link.id}>
+                  <button
+                    onClick={() => onPageChange(link.id)}
+                    className="text-steel-400 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
+                  >
+                    <ArrowRight className="h-3 w-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                    {link.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 

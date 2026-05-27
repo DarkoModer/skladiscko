@@ -12,6 +12,10 @@ import SeoNajemSkladiscnegaKontejnerja from './pages/SeoNajemSkladiscnegaKontejn
 import SeoNajemKontejnerjaZaShranjevanje from './pages/SeoNajemKontejnerjaZaShranjevanje';
 import SeoSkladiscniKontejnerCena from './pages/SeoSkladiscniKontejnerCena';
 import SeoSkladiscniKontejnerji from './pages/SeoSkladiscniKontejnerji';
+import SeoSkladiscniKontejnerLokacija from './pages/SeoSkladiscniKontejnerLokacija';
+import { locations } from './data/locations';
+
+const locationMap = Object.fromEntries(locations.map(l => [l.slug, l]));
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -28,10 +32,12 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
-  const seoPages = ['seo-najem-skladiscnega-kontejnerja', 'seo-najem-kontejnerja-za-shranjevanje', 'seo-skladiscni-kontejner-cena', 'seo-skladiscni-kontejnerji'];
-  const isSeoPage = seoPages.includes(currentPage);
-
   const renderPage = () => {
+    const locData = locationMap[currentPage];
+    if (locData) {
+      return <SeoSkladiscniKontejnerLokacija onPageChange={handlePageChange} location={locData} />;
+    }
+
     switch (currentPage) {
       case 'containers':
         return <ContainersPage onPageChange={handlePageChange} />;
@@ -60,7 +66,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      {!isSeoPage && <Header currentPage={currentPage} onPageChange={handlePageChange} />}
+      <Header currentPage={currentPage} onPageChange={handlePageChange} />
       <main key={pageKey} className="page-transition">
         {renderPage()}
       </main>
