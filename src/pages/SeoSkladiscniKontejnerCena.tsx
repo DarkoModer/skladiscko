@@ -1,7 +1,7 @@
 import { useInView } from '../hooks/useInView';
 import { CheckCircle, ArrowRight, Truck, Shield, Clock, MapPin, Container, Phone, Package, Calculator } from 'lucide-react';
 import kontejnerji from '../Photos/kontejnerji.webp';
-import pisarniski from '../Photos/pisarniski6m.jpg';
+import antracit20 from '../Photos/20antracit.jpg';
 
 interface SeoPageProps {
   onPageChange?: (page: string) => void;
@@ -48,7 +48,7 @@ const SeoSkladiscniKontejnerCena: React.FC<SeoPageProps> = ({ onPageChange }) =>
                 <img src={kontejnerji} alt="Skladiščni kontejnerji - različne velikosti in cene" className="w-full h-full object-cover" />
               </div>
               <div className="rounded-2xl overflow-hidden h-64">
-                <img src={pisarniski} alt="Skladiščni kontejner 6m cena" className="w-full h-full object-cover" />
+                <img src={antracit20} alt="Skladiščni kontejner 20' cena" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
