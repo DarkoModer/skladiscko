@@ -14,11 +14,18 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
     { name: 'Kontakt', id: 'contact' },
   ];
 
+  const seoLinks = [
+    { name: 'Najem skladiščnega kontejnerja', id: 'seo-najem-skladiscnega-kontejnerja' },
+    { name: 'Najem kontejnerja za shranjevanje', id: 'seo-najem-kontejnerja-za-shranjevanje' },
+    { name: 'Skladiščni kontejner cena', id: 'seo-skladiscni-kontejner-cena' },
+    { name: 'Skladiščni kontejnerji', id: 'seo-skladiscni-kontejnerji' },
+  ];
+
   return (
     <footer className="section-dark text-white">
       <div className="divider-glow" />
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2.5 mb-5">
               <div className="bg-gradient-to-br from-steel-600 to-steel-700 p-1.5 rounded-lg">
@@ -54,6 +61,23 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
             <h4 className="text-sm font-semibold uppercase tracking-wider text-steel-300 mb-5">Storitve</h4>
             <ul className="space-y-3">
               {links.map((link) => (
+                <li key={link.id}>
+                  <button
+                    onClick={() => onPageChange(link.id)}
+                    className="text-steel-400 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
+                  >
+                    <ArrowRight className="h-3 w-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                    {link.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-steel-300 mb-5">Skladiščni kontejner</h4>
+            <ul className="space-y-3">
+              {seoLinks.map((link) => (
                 <li key={link.id}>
                   <button
                     onClick={() => onPageChange(link.id)}
