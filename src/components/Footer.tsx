@@ -89,15 +89,14 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-steel-300 mb-5">Skladiščni kontejner</h4>
-            <ul className="space-y-3">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-steel-500 mb-4">Skladiščni kontejner</h4>
+            <ul className="space-y-2">
               {seoLinks.map((link) => (
                 <li key={link.id}>
                   <button
                     onClick={() => onPageChange(link.id)}
-                    className="text-steel-400 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
+                    className="text-steel-500 hover:text-steel-300 transition-colors duration-300 text-xs flex items-center gap-1.5 group"
                   >
-                    <ArrowRight className="h-3 w-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
                     {link.name}
                   </button>
                 </li>
@@ -106,15 +105,14 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-steel-300 mb-5">Skladiščni kontejner po krajih</h4>
-            <ul className="space-y-3">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-steel-500 mb-4">Skladiščni kontejner po krajih</h4>
+            <ul className="space-y-1.5 columns-2 gap-x-4">
               {locationLinks.map((link) => (
-                <li key={link.id}>
+                <li key={link.id} className="break-inside-avoid">
                   <button
                     onClick={() => onPageChange(link.id)}
-                    className="text-steel-400 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
+                    className="text-steel-500 hover:text-steel-300 transition-colors duration-300 text-xs flex items-center gap-1.5 group"
                   >
-                    <ArrowRight className="h-3 w-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
                     {link.name}
                   </button>
                 </li>
