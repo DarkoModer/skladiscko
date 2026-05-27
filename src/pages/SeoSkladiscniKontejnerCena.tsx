@@ -109,7 +109,7 @@ const SeoSkladiscniKontejnerCena: React.FC<SeoPageProps> = ({ onPageChange }) =>
                   <h3 className="text-lg font-bold text-steel-900">Nov skladiščni kontejner</h3>
                 </div>
                 <p className="text-steel-600 text-sm mb-3">Kakovosten nov skladiščni kontejner z garancijo. Na voljo različne barve po RAL lestvici.</p>
-                <p className="text-xl font-bold text-green-600">Po dogovoru</p>
+                <p className="text-xl font-bold text-green-600">Od 1900€ dalje</p>
               </div>
               <div className="bg-white rounded-xl p-6 border border-steel-200">
                 <div className="flex items-center gap-3 mb-3">
@@ -119,7 +119,7 @@ const SeoSkladiscniKontejnerCena: React.FC<SeoPageProps> = ({ onPageChange }) =>
                   <h3 className="text-lg font-bold text-steel-900">Rabljen skladiščni kontejner</h3>
                 </div>
                 <p className="text-steel-600 text-sm mb-3">Rabljen skladiščni kontejner v dobrem stanju. Ugodna cena skladiščnega kontejnerja.</p>
-                <p className="text-xl font-bold text-amber-600">Po dogovoru</p>
+                <p className="text-xl font-bold text-amber-600">Od 1200€ dalje</p>
               </div>
             </div>
           </div>
